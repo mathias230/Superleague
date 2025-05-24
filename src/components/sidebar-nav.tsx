@@ -8,6 +8,7 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
+  useSidebar, // Import useSidebar
 } from '@/components/ui/sidebar';
 import { cn } from '@/lib/utils';
 
@@ -20,12 +21,19 @@ const navItems = [
 
 export function SidebarNav() {
   const pathname = usePathname();
+  const { isMobile, setOpenMobile } = useSidebar(); // Get isMobile and setOpenMobile
+
+  const handleLinkClick = () => {
+    if (isMobile) {
+      setOpenMobile(false);
+    }
+  };
 
   return (
     <SidebarMenu>
       {navItems.map((item) => (
         <SidebarMenuItem key={item.href}>
-          <Link href={item.href} passHref legacyBehavior>
+          <Link href={item.href} passHref legacyBehavior onClick={handleLinkClick}>
             <SidebarMenuButton
               asChild
               isActive={pathname === item.href}
@@ -46,3 +54,4 @@ export function SidebarNav() {
     </SidebarMenu>
   );
 }
+
