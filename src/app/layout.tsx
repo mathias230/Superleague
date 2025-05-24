@@ -23,8 +23,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Pro League Hub',
-  description: 'Your central hub for the FC25 Pro Clubs League.',
+  title: 'SUPER LEAGUE',
+  description: 'Tu centro oficial para la Liga de Clubes Pro FC25.',
 };
 
 export default function RootLayout({
@@ -33,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <SidebarProvider defaultOpen={true}>
           <Sidebar collapsible="icon" className="border-r">

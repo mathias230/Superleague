@@ -1,64 +1,85 @@
 import { PageHeader } from "@/components/page-header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export default function LeagueInfoPage() {
   return (
-    <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6">
-      <PageHeader title="League Information" />
-      <div className="animate-in fade-in duration-500">
-        <Card className="shadow-lg">
+    <main className="flex flex-1 flex-col">
+      <PageHeader title="Información de la Liga" />
+      <div className="flex-1 animate-in fade-in duration-500 p-4 md:p-6 space-y-6">
+        <Card className="shadow-lg border-border">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-primary">About Pro League Hub</CardTitle>
-            <CardDescription>Welcome to the official hub for our FC25 Pro Clubs League!</CardDescription>
+            <CardTitle className="text-2xl font-bold text-primary">Sobre SUPER LEAGUE</CardTitle>
+            <CardDescription>¡Bienvenido al centro oficial de nuestra Liga de Clubes Pro FC25!</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-6">
-            <section>
-              <h2 className="text-xl font-semibold mb-2">League Overview</h2>
-              <p className="text-foreground/80">
-                This league brings together 8 competitive Pro Clubs teams to battle it out for glory. 
-                Follow your favorite team, check standings, view match results, and stay updated on the upcoming schedule.
-              </p>
-            </section>
-            
-            <section>
-              <h2 className="text-xl font-semibold mb-2">General Rules</h2>
-              <ul className="list-disc list-inside space-y-1 text-foreground/80">
-                <li>All matches are played on EA Sports FC 25, Pro Clubs mode.</li>
-                <li>Each team consists of a dedicated squad of players.</li>
-                <li>Fair play is expected from all participants. Any form of cheating or unsportsmanlike conduct may result in penalties.</li>
-                <li>Match scheduling will be coordinated between team captains and league administrators.</li>
-                <li>Results must be reported promptly after match completion.</li>
-              </ul>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-semibold mb-2">Points System</h2>
-              <ul className="list-disc list-inside space-y-1 text-foreground/80">
-                <li>Win: 3 points</li>
-                <li>Draw: 1 point</li>
-                <li>Loss: 0 points</li>
-              </ul>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-semibold mb-2">Tie-Breaker Rules</h2>
-              <p className="text-foreground/80">In case of teams having equal points in the league table, the following criteria will be used to rank them (in order of priority):</p>
-              <ol className="list-decimal list-inside space-y-1 text-foreground/80 mt-1">
-                <li>Goal Difference (GD)</li>
-                <li>Goals For (GF)</li>
-                <li>Head-to-head results</li>
-                <li>If still tied, a play-off match may be organized.</li>
-              </ol>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-semibold mb-2">Contact</h2>
-              <p className="text-foreground/80">
-                For any inquiries, please contact the league administrators via the official league communication channels.
-              </p>
-            </section>
+          <CardContent>
+            <p className="text-foreground/80">
+              Esta liga reúne a 8 equipos competitivos de Clubes Pro para luchar por la gloria. 
+              Sigue a tu equipo favorito, consulta la clasificación, mira los resultados de los partidos y mantente actualizado sobre el calendario.
+            </p>
           </CardContent>
         </Card>
+
+        <Accordion type="single" collapsible className="w-full space-y-4">
+          <AccordionItem value="item-1" className="bg-card border border-border rounded-lg shadow-sm">
+            <AccordionTrigger className="px-6 py-4 text-lg font-semibold hover:no-underline text-left">
+              Reglas Generales
+            </AccordionTrigger>
+            <AccordionContent className="px-6 pb-4 pt-0">
+              <ul className="list-disc list-inside space-y-2 text-foreground/80">
+                <li>Todos los partidos se juegan en EA Sports FC 25, modo Clubes Pro.</li>
+                <li>Cada equipo consta de una plantilla de jugadores dedicados.</li>
+                <li>Se espera juego limpio de todos los participantes. Cualquier forma de trampa o conducta antideportiva puede resultar en penalizaciones.</li>
+                <li>La programación de los partidos será coordinada entre los capitanes de los equipos y los administradores de la liga.</li>
+                <li>Los resultados deben informarse puntualmente después de la finalización del partido.</li>
+              </ul>
+            </AccordionContent>
+          </AccordionItem>
+          
+          <AccordionItem value="item-2" className="bg-card border border-border rounded-lg shadow-sm">
+            <AccordionTrigger className="px-6 py-4 text-lg font-semibold hover:no-underline text-left">
+              Sistema de Puntos
+            </AccordionTrigger>
+            <AccordionContent className="px-6 pb-4 pt-0">
+              <ul className="list-disc list-inside space-y-2 text-foreground/80">
+                <li>Victoria: 3 puntos</li>
+                <li>Empate: 1 punto</li>
+                <li>Derrota: 0 puntos</li>
+              </ul>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="item-3" className="bg-card border border-border rounded-lg shadow-sm">
+            <AccordionTrigger className="px-6 py-4 text-lg font-semibold hover:no-underline text-left">
+              Reglas de Desempate
+            </AccordionTrigger>
+            <AccordionContent className="px-6 pb-4 pt-0">
+              <p className="text-foreground/80 mb-2">En caso de que los equipos tengan los mismos puntos en la tabla de la liga, se utilizarán los siguientes criterios para clasificarlos (en orden de prioridad):</p>
+              <ol className="list-decimal list-inside space-y-1 text-foreground/80">
+                <li>Diferencia de Goles (DG)</li>
+                <li>Goles a Favor (GF)</li>
+                <li>Resultados directos entre ellos</li>
+                <li>Si persiste el empate, se podrá organizar un partido de desempate.</li>
+              </ol>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="item-4" className="bg-card border border-border rounded-lg shadow-sm">
+            <AccordionTrigger className="px-6 py-4 text-lg font-semibold hover:no-underline text-left">
+              Contacto
+            </AccordionTrigger>
+            <AccordionContent className="px-6 pb-4 pt-0">
+              <p className="text-foreground/80">
+                Para cualquier consulta, por favor contacta a los administradores de la liga a través de los canales de comunicación oficiales de la liga.
+              </p>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </div>
     </main>
   );
