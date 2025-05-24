@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Trophy, ListChecks, CalendarDays, InfoIcon } from 'lucide-react'; // Changed Info to InfoIcon for clarity if Info is a common var name
+import { Trophy, ListChecks, CalendarDays, InfoIcon } from 'lucide-react';
 import {
   SidebarMenu,
   SidebarMenuItem,
@@ -11,9 +11,9 @@ import {
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { href: '/', label: 'League Table', icon: Trophy }, // Assuming "League Table" might be translated later if needed
-  { href: '/results', label: 'Match Results', icon: ListChecks }, // Assuming "Match Results" might be translated later if needed
-  { href: '/schedule', label: 'Match Schedule', icon: CalendarDays }, // Assuming "Match Schedule" might be translated later if needed
+  { href: '/', label: 'Tabla de Posiciones', icon: Trophy },
+  { href: '/results', label: 'Resultados', icon: ListChecks },
+  { href: '/schedule', label: 'Calendario', icon: CalendarDays },
   { href: '/info', label: 'Información', icon: InfoIcon },
 ];
 
