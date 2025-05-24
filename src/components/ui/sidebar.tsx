@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -555,6 +556,11 @@ const SidebarMenuButton = React.forwardRef<
   ) => {
     const Comp = asChild ? Slot : "button"
     const { isMobile, state } = useSidebar()
+    const [isClient, setIsClient] = React.useState(false)
+
+    React.useEffect(() => {
+      setIsClient(true)
+    }, [])
 
     const button = (
       <Comp
@@ -571,11 +577,20 @@ const SidebarMenuButton = React.forwardRef<
       return button
     }
 
+    let tooltipProps: React.ComponentProps<typeof TooltipContent>
     if (typeof tooltip === "string") {
-      tooltip = {
-        children: tooltip,
-      }
+      tooltipProps = { children: tooltip }
+    } else {
+      tooltipProps = tooltip
     }
+    
+    // Determine initial hidden state for server and first client render
+    // useIsMobile returns false on server, so serverSideIsMobile is false
+    const serverSideIsMobile = false; 
+    const initialHiddenValue = state !== "collapsed" || serverSideIsMobile;
+    
+    // Determine client-side hidden state after hydration
+    const clientSideHiddenValue = state !== "collapsed" || isMobile;
 
     return (
       <Tooltip>
@@ -583,8 +598,9 @@ const SidebarMenuButton = React.forwardRef<
         <TooltipContent
           side="right"
           align="center"
-          hidden={state !== "collapsed" || isMobile}
-          {...tooltip}
+          // Use initialHiddenValue for SSR and first client render, then update
+          hidden={isClient ? clientSideHiddenValue : initialHiddenValue}
+          {...tooltipProps}
         />
       </Tooltip>
     )
