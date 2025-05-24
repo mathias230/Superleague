@@ -16,7 +16,7 @@ export default function LeagueInfoPage() {
         <Card className="shadow-lg border-border">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-primary">Sobre SUPER LEAGUE</CardTitle>
-            <CardDescription>¡Bienvenido al centro oficial de nuestra Liga de Clubes Pro FC25!</CardDescription>
+            <CardDescription className="text-card-foreground">¡Bienvenido al centro oficial de nuestra Liga de Clubes Pro FC25!</CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-card-foreground">
@@ -28,7 +28,7 @@ export default function LeagueInfoPage() {
 
         <Accordion type="single" collapsible className="w-full space-y-4">
           <AccordionItem value="item-1" className="bg-card border border-border rounded-lg shadow-sm">
-            <AccordionTrigger className="px-6 py-4 text-lg font-semibold hover:no-underline text-left">
+            <AccordionTrigger className="px-6 py-4 text-lg font-semibold hover:no-underline text-left text-card-foreground">
               Reglas Generales
             </AccordionTrigger>
             <AccordionContent className="px-6 pb-4 pt-0">
@@ -43,7 +43,7 @@ export default function LeagueInfoPage() {
           </AccordionItem>
           
           <AccordionItem value="item-2" className="bg-card border border-border rounded-lg shadow-sm">
-            <AccordionTrigger className="px-6 py-4 text-lg font-semibold hover:no-underline text-left">
+            <AccordionTrigger className="px-6 py-4 text-lg font-semibold hover:no-underline text-left text-card-foreground">
               Sistema de Puntos
             </AccordionTrigger>
             <AccordionContent className="px-6 pb-4 pt-0">
@@ -56,7 +56,7 @@ export default function LeagueInfoPage() {
           </AccordionItem>
 
           <AccordionItem value="item-3" className="bg-card border border-border rounded-lg shadow-sm">
-            <AccordionTrigger className="px-6 py-4 text-lg font-semibold hover:no-underline text-left">
+            <AccordionTrigger className="px-6 py-4 text-lg font-semibold hover:no-underline text-left text-card-foreground">
               Reglas de Desempate
             </AccordionTrigger>
             <AccordionContent className="px-6 pb-4 pt-0">
@@ -71,7 +71,7 @@ export default function LeagueInfoPage() {
           </AccordionItem>
 
           <AccordionItem value="item-4" className="bg-card border border-border rounded-lg shadow-sm">
-            <AccordionTrigger className="px-6 py-4 text-lg font-semibold hover:no-underline text-left">
+            <AccordionTrigger className="px-6 py-4 text-lg font-semibold hover:no-underline text-left text-card-foreground">
               Contacto
             </AccordionTrigger>
             <AccordionContent className="px-6 pb-4 pt-0">
