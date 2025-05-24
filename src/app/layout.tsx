@@ -25,6 +25,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'SUPER LEAGUE',
   description: 'Tu centro oficial para la Liga de Clubes Pro FC25.',
+  icons: {
+    icon: null, // Explicitly prevent default app-based favicon
+  },
 };
 
 export default function RootLayout({
