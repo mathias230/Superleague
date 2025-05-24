@@ -13,7 +13,7 @@ export function TeamDisplay({ team, showLogo = true, imageSize = 24 }: TeamDispl
   }
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex flex-col items-center gap-1 text-center">
       {showLogo && team.logoUrl && (
         <Image
           src={team.logoUrl}
@@ -24,7 +24,7 @@ export function TeamDisplay({ team, showLogo = true, imageSize = 24 }: TeamDispl
           data-ai-hint="soccer logo"
         />
       )}
-      <span className="truncate">{team.name}</span>
+      <span className="text-sm font-medium leading-tight">{team.name}</span>
     </div>
   );
 }
