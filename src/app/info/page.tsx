@@ -74,7 +74,7 @@ export default function LeagueInfoPage() {
             </AccordionTrigger>
             <AccordionContent className="px-6 pb-4 pt-0">
               <p className="text-card-foreground">
-                Para cualquier consulta, por favor contacta a los administradores de la liga a través de los canales de comunicación oficiales de la liga.
+                Para cualquier consulta, por favor contacta a los administradores de la liga a traves de Discord en el Servidor Oficial de la Liga
               </p>
             </AccordionContent>
           </AccordionItem>
