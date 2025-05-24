@@ -2,36 +2,33 @@
 import type { Team, Match, StandingEntry } from './types';
 
 export const teams: Team[] = [
-  { id: '1', name: 'Los Naranjas', logoUrl: 'https://placehold.co/40x40.png?text=LN' },
-  { id: '2', name: 'CriminalLife', logoUrl: 'https://placehold.co/40x40.png?text=CL' },
-  { id: '3', name: 'Barrio Alajuela', logoUrl: 'https://placehold.co/40x40.png?text=BA' },
-  { id: '4', name: 'Wonkru CF', logoUrl: 'https://placehold.co/40x40.png?text=WCF' },
-  { id: '5', name: 'Alevatopoca OFC', logoUrl: 'https://placehold.co/40x40.png?text=AOFC' },
-  { id: '6', name: 'V07A18', logoUrl: 'https://placehold.co/40x40.png?text=V07' },
-  { id: '7', name: 'la maquina', logoUrl: 'https://placehold.co/40x40.png?text=LM' },
-  { id: '8', name: 'Locos Traidores', logoUrl: 'https://placehold.co/40x40.png?text=LT' },
+  { id: '1', name: 'Los Naranjas', logoUrl: 'https://placehold.co/48x48.png?text=LN' },
+  { id: '2', name: 'CriminalLife', logoUrl: 'https://placehold.co/48x48.png?text=CL' },
+  { id: '3', name: 'Barrio Alajuela', logoUrl: 'https://placehold.co/48x48.png' },
+  { id: '4', name: 'Wonkru CF', logoUrl: 'https://placehold.co/48x48.png?text=WCF' },
+  { id: '5', name: 'Alevatopoca OFC', logoUrl: 'https://placehold.co/48x48.png?text=AOFC' },
+  { id: '6', name: 'V07A18', logoUrl: 'https://placehold.co/48x48.png?text=V07' },
+  { id: '7', name: 'la maquina', logoUrl: 'https://placehold.co/48x48.png?text=LM' },
+  { id: '8', name: 'Locos Traidores', logoUrl: 'https://placehold.co/48x48.png?text=LT' },
 ];
 
 export const matches: Match[] = [
   // Jornada 1
-  { id: 'm2', homeTeamId: '8', awayTeamId: '2', homeScore: null, awayScore: null, date: '2025-05-24T23:00:00Z', status: 'upcoming', round: 1 }, // Locos Traidores vs CriminalLife
+  { id: 'm2', homeTeamId: '8', awayTeamId: '2', homeScore: 3, awayScore: 0, date: '2025-05-24T23:00:00Z', status: 'played', round: 1 }, // Locos Traidores vs CriminalLife
   { id: 'm1', homeTeamId: '5', awayTeamId: '7', homeScore: null, awayScore: null, date: '2025-05-24T23:00:00Z', status: 'upcoming', round: 1 }, // Alevatopoca OFC vs La máquina
-  
-  { id: 'm4', homeTeamId: '6', awayTeamId: '3', homeScore: null, awayScore: null, date: '2025-05-25T23:00:00Z', status: 'upcoming', round: 1 }, // V07A18 vs Barrio Alajuela
+  { id: 'm4', homeTeamId: '6', awayTeamId: '3', homeScore: 1, awayScore: 2, date: '2025-05-25T23:00:00Z', status: 'played', round: 1 }, // V07A18 vs Barrio Alajuela
   { id: 'm3', homeTeamId: '4', awayTeamId: '1', homeScore: null, awayScore: null, date: '2025-05-25T23:00:00Z', status: 'upcoming', round: 1 }, // Wonkru CF vs Los Naranjas
 
   // Jornada 2
   { id: 'm6', homeTeamId: '7', awayTeamId: '6', homeScore: null, awayScore: null, date: '2025-05-31T23:20:00Z', status: 'upcoming', round: 2 }, // La máquina vs V07A18
-  { id: 'm5', homeTeamId: '8', awayTeamId: '4', homeScore: null, awayScore: null, date: '2025-05-31T23:20:00Z', status: 'upcoming', round: 2 }, // Locos Traidores vs Wonkru CF
-  
+  { id: 'm5', homeTeamId: '8', awayTeamId: '4', homeScore: 3, awayScore: 0, date: '2025-05-31T23:20:00Z', status: 'played', round: 2 }, // Locos Traidores vs Wonkru CF
   { id: 'm8', homeTeamId: '2', awayTeamId: '5', homeScore: null, awayScore: null, date: '2025-06-01T23:20:00Z', status: 'upcoming', round: 2 }, // CriminalLife vs Alevatopoca OFC
-  { id: 'm7', homeTeamId: '1', awayTeamId: '3', homeScore: null, awayScore: null, date: '2025-06-01T23:20:00Z', status: 'upcoming', round: 2 }, // Los Naranjas vs Barrio Alajuela
+  { id: 'm7', homeTeamId: '1', awayTeamId: '3', homeScore: 1, awayScore: 2, date: '2025-06-01T23:20:00Z', status: 'played', round: 2 }, // Los Naranjas vs Barrio Alajuela
 
   // Jornada 3
   { id: 'm9', homeTeamId: '7', awayTeamId: '2', homeScore: null, awayScore: null, date: '2025-06-07T23:40:00Z', status: 'upcoming', round: 3 }, // La máquina vs CriminalLife
   { id: 'm10', homeTeamId: '5', awayTeamId: '4', homeScore: null, awayScore: null, date: '2025-06-07T23:40:00Z', status: 'upcoming', round: 3 }, // Alevatopoca OFC vs Wonkru CF
-  
-  { id: 'm11', homeTeamId: '3', awayTeamId: '8', homeScore: null, awayScore: null, date: '2025-06-08T23:40:00Z', status: 'upcoming', round: 3 }, // Barrio Alajuela vs Locos Traidores
+  { id: 'm11', homeTeamId: '3', awayTeamId: '8', homeScore: 0, awayScore: 3, date: '2025-06-08T23:40:00Z', status: 'played', round: 3 }, // Barrio Alajuela vs Locos Traidores
   { id: 'm12', homeTeamId: '6', awayTeamId: '1', homeScore: null, awayScore: null, date: '2025-06-08T23:40:00Z', status: 'upcoming', round: 3 }, // V07A18 vs Los Naranjas
 ];
 
