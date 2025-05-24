@@ -17,7 +17,7 @@ export function LeagueTable() {
   return (
     <Card className="shadow-lg">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold text-center text-primary">League Standings</CardTitle>
+        <CardTitle className="text-2xl font-bold text-center text-primary">Tabla de Posiciones</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="overflow-x-auto">
