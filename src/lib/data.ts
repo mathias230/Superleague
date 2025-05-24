@@ -1,0 +1,99 @@
+import type { Team, Match, StandingEntry } from './types';
+
+export const teams: Team[] = [
+  { id: '1', name: 'Valiant Vortex FC', logoUrl: 'https://placehold.co/40x40.png?text=VVFC' },
+  { id: '2', name: 'Crimson Comets', logoUrl: 'https://placehold.co/40x40.png?text=CC' },
+  { id: '3', name: 'Azure Avengers', logoUrl: 'https://placehold.co/40x40.png?text=AA' },
+  { id: '4', name: 'Golden Griffins', logoUrl: 'https://placehold.co/40x40.png?text=GG' },
+  { id: '5', name: 'Emerald Enforcers', logoUrl: 'https://placehold.co/40x40.png?text=EE' },
+  { id: '6', name: 'Silver Sharks', logoUrl: 'https://placehold.co/40x40.png?text=SS' },
+  { id: '7', name: 'Bronze Behemoths', logoUrl: 'https://placehold.co/40x40.png?text=BB' },
+  { id: '8', name: 'Obsidian Outlaws', logoUrl: 'https://placehold.co/40x40.png?text=OO' },
+];
+
+export const matches: Match[] = [
+  // Round 1
+  { id: 'm1', homeTeamId: '1', awayTeamId: '2', homeScore: 2, awayScore: 1, date: '2024-08-01T18:00:00Z', status: 'played', round: 1 },
+  { id: 'm2', homeTeamId: '3', awayTeamId: '4', homeScore: 0, awayScore: 0, date: '2024-08-01T20:00:00Z', status: 'played', round: 1 },
+  { id: 'm3', homeTeamId: '5', awayTeamId: '6', homeScore: 3, awayScore: 2, date: '2024-08-02T18:00:00Z', status: 'played', round: 1 },
+  { id: 'm4', homeTeamId: '7', awayTeamId: '8', homeScore: 1, awayScore: 4, date: '2024-08-02T20:00:00Z', status: 'played', round: 1 },
+  // Round 2
+  { id: 'm5', homeTeamId: '1', awayTeamId: '3', homeScore: 1, awayScore: 1, date: '2024-08-08T18:00:00Z', status: 'played', round: 2 },
+  { id: 'm6', homeTeamId: '2', awayTeamId: '4', homeScore: 2, awayScore: 0, date: '2024-08-08T20:00:00Z', status: 'played', round: 2 },
+  { id: 'm7', homeTeamId: '5', awayTeamId: '7', homeScore: null, awayScore: null, date: '2024-08-09T18:00:00Z', status: 'upcoming', round: 2 },
+  { id: 'm8', homeTeamId: '6', awayTeamId: '8', homeScore: null, awayScore: null, date: '2024-08-09T20:00:00Z', status: 'upcoming', round: 2 },
+  // Round 3
+  { id: 'm9', homeTeamId: '4', awayTeamId: '1', homeScore: null, awayScore: null, date: '2024-08-15T18:00:00Z', status: 'upcoming', round: 3 },
+  { id: 'm10', homeTeamId: '3', awayTeamId: '2', homeScore: null, awayScore: null, date: '2024-08-15T20:00:00Z', status: 'upcoming', round: 3 },
+  { id: 'm11', homeTeamId: '8', awayTeamId: '5', homeScore: null, awayScore: null, date: '2024-08-16T18:00:00Z', status: 'upcoming', round: 3 },
+  { id: 'm12', homeTeamId: '7', awayTeamId: '6', homeScore: null, awayScore: null, date: '2024-08-16T20:00:00Z', status: 'upcoming', round: 3 },
+];
+
+export function getTeamById(teamId: string): Team | undefined {
+  return teams.find(team => team.id === teamId);
+}
+
+export function calculateStandings(teamsData: Team[], matchesData: Match[]): StandingEntry[] {
+  const standingsMap: Map<string, StandingEntry> = new Map();
+
+  teamsData.forEach(team => {
+    standingsMap.set(team.id, {
+      teamId: team.id,
+      teamName: team.name,
+      teamLogoUrl: team.logoUrl,
+      played: 0,
+      wins: 0,
+      draws: 0,
+      losses: 0,
+      goalsFor: 0,
+      goalsAgainst: 0,
+      goalDifference: 0,
+      points: 0,
+    });
+  });
+
+  matchesData.forEach(match => {
+    if (match.status === 'played' && match.homeScore !== null && match.awayScore !== null) {
+      const homeTeamStanding = standingsMap.get(match.homeTeamId)!;
+      const awayTeamStanding = standingsMap.get(match.awayTeamId)!;
+
+      homeTeamStanding.played++;
+      awayTeamStanding.played++;
+
+      homeTeamStanding.goalsFor += match.homeScore;
+      homeTeamStanding.goalsAgainst += match.awayScore;
+      awayTeamStanding.goalsFor += match.awayScore;
+      awayTeamStanding.goalsAgainst += match.homeScore;
+
+      if (match.homeScore > match.awayScore) {
+        homeTeamStanding.wins++;
+        homeTeamStanding.points += 3;
+        awayTeamStanding.losses++;
+      } else if (match.homeScore < match.awayScore) {
+        awayTeamStanding.wins++;
+        awayTeamStanding.points += 3;
+        homeTeamStanding.losses++;
+      } else {
+        homeTeamStanding.draws++;
+        homeTeamStanding.points++;
+        awayTeamStanding.draws++;
+        awayTeamStanding.points++;
+      }
+    }
+  });
+
+  const standings: StandingEntry[] = [];
+  standingsMap.forEach(standing => {
+    standing.goalDifference = standing.goalsFor - standing.goalsAgainst;
+    standings.push(standing);
+  });
+
+  standings.sort((a, b) => {
+    if (b.points !== a.points) return b.points - a.points;
+    if (b.goalDifference !== a.goalDifference) return b.goalDifference - a.goalDifference;
+    if (b.goalsFor !== a.goalsFor) return b.goalsFor - a.goalsFor;
+    return a.teamName.localeCompare(b.teamName); // Alphabetical as a last resort
+  });
+
+  return standings;
+}
