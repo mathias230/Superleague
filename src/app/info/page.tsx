@@ -64,8 +64,6 @@ export default function LeagueInfoPage() {
               <ol className="list-decimal list-inside space-y-1 text-card-foreground">
                 <li>Diferencia de Goles (DG)</li>
                 <li>Goles a Favor (GF)</li>
-                <li>Resultados directos entre ellos</li>
-                <li>Si persiste el empate, se podrá organizar un partido de desempate.</li>
               </ol>
             </AccordionContent>
           </AccordionItem>
