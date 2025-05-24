@@ -24,7 +24,7 @@ export function TeamDisplay({ team, showLogo = true, imageSize = 24 }: TeamDispl
           data-ai-hint="soccer logo"
         />
       )}
-      <span>{team.name}</span>
+      <span className="truncate">{team.name}</span>
     </div>
   );
 }
