@@ -1,14 +1,15 @@
+
 import type { Team, Match, StandingEntry } from './types';
 
 export const teams: Team[] = [
-  { id: '1', name: 'Valiant Vortex FC', logoUrl: 'https://placehold.co/40x40.png?text=VVFC' },
-  { id: '2', name: 'Crimson Comets', logoUrl: 'https://placehold.co/40x40.png?text=CC' },
-  { id: '3', name: 'Azure Avengers', logoUrl: 'https://placehold.co/40x40.png?text=AA' },
-  { id: '4', name: 'Golden Griffins', logoUrl: 'https://placehold.co/40x40.png?text=GG' },
-  { id: '5', name: 'Emerald Enforcers', logoUrl: 'https://placehold.co/40x40.png?text=EE' },
-  { id: '6', name: 'Silver Sharks', logoUrl: 'https://placehold.co/40x40.png?text=SS' },
-  { id: '7', name: 'Bronze Behemoths', logoUrl: 'https://placehold.co/40x40.png?text=BB' },
-  { id: '8', name: 'Obsidian Outlaws', logoUrl: 'https://placehold.co/40x40.png?text=OO' },
+  { id: '1', name: 'Los Naranjas', logoUrl: 'https://placehold.co/40x40.png?text=LN' },
+  { id: '2', name: 'CriminalLife', logoUrl: 'https://placehold.co/40x40.png?text=CL' },
+  { id: '3', name: 'Barrio Alajuela', logoUrl: 'https://placehold.co/40x40.png?text=BA' },
+  { id: '4', name: 'Wonkru CF', logoUrl: 'https://placehold.co/40x40.png?text=WCF' },
+  { id: '5', name: 'Alevatopoca OFC', logoUrl: 'https://placehold.co/40x40.png?text=AOFC' },
+  { id: '6', name: 'V07A18', logoUrl: 'https://placehold.co/40x40.png?text=V07' },
+  { id: '7', name: 'la maquina', logoUrl: 'https://placehold.co/40x40.png?text=LM' },
+  { id: '8', name: 'Locos Traidores', logoUrl: 'https://placehold.co/40x40.png?text=LT' },
 ];
 
 export const matches: Match[] = [
