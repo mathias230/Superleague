@@ -13,21 +13,23 @@ export const teams: Team[] = [
 ];
 
 export const matches: Match[] = [
-  // Round 1
-  { id: 'm1', homeTeamId: '1', awayTeamId: '2', homeScore: 2, awayScore: 1, date: '2024-08-01T18:00:00Z', status: 'played', round: 1 },
-  { id: 'm2', homeTeamId: '3', awayTeamId: '4', homeScore: 0, awayScore: 0, date: '2024-08-01T20:00:00Z', status: 'played', round: 1 },
-  { id: 'm3', homeTeamId: '5', awayTeamId: '6', homeScore: 3, awayScore: 2, date: '2024-08-02T18:00:00Z', status: 'played', round: 1 },
-  { id: 'm4', homeTeamId: '7', awayTeamId: '8', homeScore: 1, awayScore: 4, date: '2024-08-02T20:00:00Z', status: 'played', round: 1 },
-  // Round 2
-  { id: 'm5', homeTeamId: '1', awayTeamId: '3', homeScore: 1, awayScore: 1, date: '2024-08-08T18:00:00Z', status: 'played', round: 2 },
-  { id: 'm6', homeTeamId: '2', awayTeamId: '4', homeScore: 2, awayScore: 0, date: '2024-08-08T20:00:00Z', status: 'played', round: 2 },
-  { id: 'm7', homeTeamId: '5', awayTeamId: '7', homeScore: null, awayScore: null, date: '2024-08-09T18:00:00Z', status: 'upcoming', round: 2 },
-  { id: 'm8', homeTeamId: '6', awayTeamId: '8', homeScore: null, awayScore: null, date: '2024-08-09T20:00:00Z', status: 'upcoming', round: 2 },
-  // Round 3
-  { id: 'm9', homeTeamId: '4', awayTeamId: '1', homeScore: null, awayScore: null, date: '2024-08-15T18:00:00Z', status: 'upcoming', round: 3 },
-  { id: 'm10', homeTeamId: '3', awayTeamId: '2', homeScore: null, awayScore: null, date: '2024-08-15T20:00:00Z', status: 'upcoming', round: 3 },
-  { id: 'm11', homeTeamId: '8', awayTeamId: '5', homeScore: null, awayScore: null, date: '2024-08-16T18:00:00Z', status: 'upcoming', round: 3 },
-  { id: 'm12', homeTeamId: '7', awayTeamId: '6', homeScore: null, awayScore: null, date: '2024-08-16T20:00:00Z', status: 'upcoming', round: 3 },
+  // Jornada 1
+  { id: 'm1', homeTeamId: '5', awayTeamId: '7', homeScore: null, awayScore: null, date: '2024-05-24T18:00:00Z', status: 'upcoming', round: 1 }, // Alevatopoca OFC vs La máquina
+  { id: 'm2', homeTeamId: '8', awayTeamId: '2', homeScore: null, awayScore: null, date: '2024-05-24T20:00:00Z', status: 'upcoming', round: 1 }, // Locos Traidores vs CriminalLife
+  { id: 'm3', homeTeamId: '4', awayTeamId: '1', homeScore: null, awayScore: null, date: '2024-05-25T18:00:00Z', status: 'upcoming', round: 1 }, // Wonkru CF vs Los Naranjas
+  { id: 'm4', homeTeamId: '6', awayTeamId: '3', homeScore: null, awayScore: null, date: '2024-05-25T20:00:00Z', status: 'upcoming', round: 1 }, // V07A18 vs Barrio Alajuela
+
+  // Jornada 2
+  { id: 'm5', homeTeamId: '8', awayTeamId: '4', homeScore: null, awayScore: null, date: '2024-05-31T18:00:00Z', status: 'upcoming', round: 2 }, // Locos Traidores vs Wonkru CF
+  { id: 'm6', homeTeamId: '7', awayTeamId: '6', homeScore: null, awayScore: null, date: '2024-05-31T20:00:00Z', status: 'upcoming', round: 2 }, // La máquina vs V07A18
+  { id: 'm7', homeTeamId: '1', awayTeamId: '3', homeScore: null, awayScore: null, date: '2024-06-01T18:00:00Z', status: 'upcoming', round: 2 }, // Los Naranjas vs Barrio Alajuela
+  { id: 'm8', homeTeamId: '2', awayTeamId: '5', homeScore: null, awayScore: null, date: '2024-06-01T20:00:00Z', status: 'upcoming', round: 2 }, // CriminalLife vs Alevatopoca OFC
+
+  // Jornada 3
+  { id: 'm9', homeTeamId: '7', awayTeamId: '2', homeScore: null, awayScore: null, date: '2024-06-07T18:00:00Z', status: 'upcoming', round: 3 }, // La máquina vs CriminalLife
+  { id: 'm10', homeTeamId: '5', awayTeamId: '4', homeScore: null, awayScore: null, date: '2024-06-07T20:00:00Z', status: 'upcoming', round: 3 }, // Alevatopoca OFC vs Wonkru CF
+  { id: 'm11', homeTeamId: '3', awayTeamId: '8', homeScore: null, awayScore: null, date: '2024-06-08T18:00:00Z', status: 'upcoming', round: 3 }, // Barrio Alajuela vs Locos Traidores
+  { id: 'm12', homeTeamId: '6', awayTeamId: '1', homeScore: null, awayScore: null, date: '2024-06-08T20:00:00Z', status: 'upcoming', round: 3 }, // V07A18 vs Los Naranjas
 ];
 
 export function getTeamById(teamId: string): Team | undefined {
