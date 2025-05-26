@@ -1,8 +1,8 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
-import { useFormState } from "react-dom";
+import { useEffect, useState, useActionState } from "react"; // Changed import
+// import { useFormState } from "react-dom"; // Removed old import
 import { useRouter } from "next/navigation";
 import { PageHeader } from "@/components/page-header";
 import { matches as allMatches, getTeamById } from "@/lib/data";
@@ -12,7 +12,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { updateMatchAction } from "@/app/admin/matches/actions"; // We'll create this action
+import { updateMatchAction } from "@/app/admin/matches/actions";
 import { useToast } from "@/hooks/use-toast";
 import Link from "next/link";
 import { ArrowLeftIcon } from "lucide-react";
@@ -26,7 +26,8 @@ const initialState = {
 export default function EditMatchPage({ params }: { params: { matchId: string } }) {
   const router = useRouter();
   const { toast } = useToast();
-  const [state, formAction] = useFormState(updateMatchAction, initialState);
+  // Updated to useActionState
+  const [state, formAction] = useActionState(updateMatchAction, initialState);
   
   const [match, setMatch] = useState<Match | undefined>(undefined);
   const [homeScore, setHomeScore] = useState<string>("");
@@ -51,10 +52,8 @@ export default function EditMatchPage({ params }: { params: { matchId: string } 
         variant: state.success ? "default" : "destructive",
       });
       if (state.success) {
-        // Instead of redirecting from action, redirect from client after toast
-        // This is often better for UX with useFormState
         router.push("/admin/matches");
-        router.refresh(); // Important to reflect changes if data source was updated
+        router.refresh(); 
       }
     }
   }, [state, toast, router]);
