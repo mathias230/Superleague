@@ -3,12 +3,12 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Trophy, ListChecks, CalendarDays, InfoIcon } from 'lucide-react';
+import { Trophy, ListChecks, CalendarDays, InfoIcon, Settings } from 'lucide-react'; // Added Settings
 import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
-  useSidebar, // Import useSidebar
+  useSidebar,
 } from '@/components/ui/sidebar';
 import { cn } from '@/lib/utils';
 
@@ -17,11 +17,12 @@ const navItems = [
   { href: '/results', label: 'Resultados', icon: ListChecks },
   { href: '/schedule', label: 'Calendario', icon: CalendarDays },
   { href: '/info', label: 'Información', icon: InfoIcon },
+  { href: '/admin', label: 'Administración', icon: Settings }, // Added Admin link
 ];
 
 export function SidebarNav() {
   const pathname = usePathname();
-  const { isMobile, setOpenMobile } = useSidebar(); // Get isMobile and setOpenMobile
+  const { isMobile, setOpenMobile } = useSidebar();
 
   const handleLinkClick = () => {
     if (isMobile) {
@@ -36,10 +37,10 @@ export function SidebarNav() {
           <Link href={item.href} passHref legacyBehavior onClick={handleLinkClick}>
             <SidebarMenuButton
               asChild
-              isActive={pathname === item.href}
+              isActive={pathname.startsWith(item.href) && (item.href !== '/' || pathname === '/')} // Adjusted isActive for parent routes
               className={cn(
                 "w-full justify-start",
-                pathname === item.href ? "bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90" : "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                (pathname.startsWith(item.href) && (item.href !== '/' || pathname === '/')) ? "bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90" : "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
               )}
               tooltip={item.label}
             >
@@ -54,4 +55,3 @@ export function SidebarNav() {
     </SidebarMenu>
   );
 }
-
