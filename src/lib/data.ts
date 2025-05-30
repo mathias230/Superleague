@@ -1,5 +1,5 @@
 
-import type { Team, Match, StandingEntry } from './types';
+import type { Team, Match, StandingEntry, RelampagoEdition } from './types';
 
 export const teams: Team[] = [
   { id: '1', name: 'Los Naranjas', logoUrl: 'https://placehold.co/48x48.png?text=LN' },
@@ -13,25 +13,25 @@ export const teams: Team[] = [
 ];
 
 export const matches: Match[] = [
-  { id: 'm1', homeTeamId: '5', awayTeamId: '7', homeScore: 2, awayScore: 0, date: '2025-05-24T23:00:00Z', status: 'played', round: 1 },
-  { id: 'm2', homeTeamId: '8', awayTeamId: '2', homeScore: 1, awayScore: 0, date: '2025-05-24T23:00:00Z', status: 'played', round: 1 },
-  { id: 'm3', homeTeamId: '4', awayTeamId: '1', homeScore: 1, awayScore: 0, date: '2025-05-24T23:00:00Z', status: 'played', round: 1 },
-  { id: 'm4', homeTeamId: '6', awayTeamId: '3', homeScore: 0, awayScore: 2, date: '2025-05-24T23:00:00Z', status: 'played', round: 1 },
-  { id: 'm5', homeTeamId: '8', awayTeamId: '4', homeScore: 2, awayScore: 0, date: '2025-05-24T23:20:00Z', status: 'played', round: 2 },
-  { id: 'm6', homeTeamId: '7', awayTeamId: '6', homeScore: 2, awayScore: 0, date: '2025-05-24T23:20:00Z', status: 'played', round: 2 },
-  { id: 'm7', homeTeamId: '1', awayTeamId: '3', homeScore: 0, awayScore: 3, date: '2025-05-24T23:20:00Z', status: 'played', round: 2 },
-  { id: 'm8', homeTeamId: '2', awayTeamId: '5', homeScore: 0, awayScore: 2, date: '2025-05-24T23:20:00Z', status: 'played', round: 2 },
-  { id: 'm9', homeTeamId: '7', awayTeamId: '2', homeScore: 0, awayScore: 2, date: '2025-05-24T23:40:00Z', status: 'played', round: 3 },
-  { id: 'm10', homeTeamId: '5', awayTeamId: '4', homeScore: 2, awayScore: 0, date: '2025-05-24T23:40:00Z', status: 'played', round: 3 },
-  { id: 'm11', homeTeamId: '3', awayTeamId: '8', homeScore: 1, awayScore: 1, date: '2025-05-24T23:40:00Z', status: 'played', round: 3 },
-  { id: 'm12', homeTeamId: '6', awayTeamId: '1', homeScore: 1, awayScore: 0, date: '2025-05-24T23:40:00Z', status: 'played', round: 3 },
-  { id: 'm13', homeTeamId: '3', awayTeamId: '2', homeScore: 2, awayScore: 0, date: '2025-05-24T20:00:00Z', status: 'played', round: 4 },
-  { id: 'm14', homeTeamId: '3', awayTeamId: '7', homeScore: 1, awayScore: 0, date: '2025-05-24T20:00:00Z', status: 'played', round: 4 },
-  { id: 'm15', homeTeamId: '8', awayTeamId: '7', homeScore: 2, awayScore: 0, date: '2025-05-24T20:20:00Z', status: 'played', round: 4 },
-  { id: 'm16', homeTeamId: '8', awayTeamId: '6', homeScore: 1, awayScore: 0, date: '2025-05-24T20:20:00Z', status: 'played', round: 4 },
-  { id: 'm17', homeTeamId: '5', awayTeamId: '1', homeScore: 2, awayScore: 0, date: '2025-05-24T20:40:00Z', status: 'played', round: 5 },
-  { id: 'm18', homeTeamId: '5', awayTeamId: '4', homeScore: 0, awayScore: 1, date: '2025-05-24T20:40:00Z', status: 'played', round: 5 },
-  { id: 'm19', homeTeamId: '1', awayTeamId: '6', homeScore: 1, awayScore: 0, date: '2025-05-24T21:00:00Z', status: 'played', round: 5 },
+  { id: 'm1', homeTeamId: '5', awayTeamId: '7', homeScore: null, awayScore: null, date: '2025-05-24T23:00:00Z', status: 'upcoming', round: 1 },
+  { id: 'm2', homeTeamId: '8', awayTeamId: '2', homeScore: null, awayScore: null, date: '2025-05-24T23:00:00Z', status: 'upcoming', round: 1 },
+  { id: 'm3', homeTeamId: '4', awayTeamId: '1', homeScore: null, awayScore: null, date: '2025-05-24T23:00:00Z', status: 'upcoming', round: 1 },
+  { id: 'm4', homeTeamId: '6', awayTeamId: '3', homeScore: null, awayScore: null, date: '2025-05-24T23:00:00Z', status: 'upcoming', round: 1 },
+  { id: 'm5', homeTeamId: '8', awayTeamId: '4', homeScore: null, awayScore: null, date: '2025-05-24T23:20:00Z', status: 'upcoming', round: 2 },
+  { id: 'm6', homeTeamId: '7', awayTeamId: '6', homeScore: null, awayScore: null, date: '2025-05-24T23:20:00Z', status: 'upcoming', round: 2 },
+  { id: 'm7', homeTeamId: '1', awayTeamId: '3', homeScore: null, awayScore: null, date: '2025-05-24T23:20:00Z', status: 'upcoming', round: 2 },
+  { id: 'm8', homeTeamId: '2', awayTeamId: '5', homeScore: null, awayScore: null, date: '2025-05-24T23:20:00Z', status: 'upcoming', round: 2 },
+  { id: 'm9', homeTeamId: '7', awayTeamId: '2', homeScore: null, awayScore: null, date: '2025-05-24T23:40:00Z', status: 'upcoming', round: 3 },
+  { id: 'm10', homeTeamId: '5', awayTeamId: '4', homeScore: null, awayScore: null, date: '2025-05-24T23:40:00Z', status: 'upcoming', round: 3 },
+  { id: 'm11', homeTeamId: '3', awayTeamId: '8', homeScore: null, awayScore: null, date: '2025-05-24T23:40:00Z', status: 'upcoming', round: 3 },
+  { id: 'm12', homeTeamId: '6', awayTeamId: '1', homeScore: null, awayScore: null, date: '2025-05-24T23:40:00Z', status: 'upcoming', round: 3 },
+  { id: 'm13', homeTeamId: '3', awayTeamId: '2', homeScore: null, awayScore: null, date: '2025-05-24T20:00:00Z', status: 'upcoming', round: 4 },
+  { id: 'm14', homeTeamId: '3', awayTeamId: '7', homeScore: null, awayScore: null, date: '2025-05-24T20:00:00Z', status: 'upcoming', round: 4 },
+  { id: 'm15', homeTeamId: '8', awayTeamId: '7', homeScore: null, awayScore: null, date: '2025-05-24T20:20:00Z', status: 'upcoming', round: 4 },
+  { id: 'm16', homeTeamId: '8', awayTeamId: '6', homeScore: null, awayScore: null, date: '2025-05-24T20:20:00Z', status: 'upcoming', round: 4 },
+  { id: 'm17', homeTeamId: '5', awayTeamId: '1', homeScore: null, awayScore: null, date: '2025-05-24T20:40:00Z', status: 'upcoming', round: 5 },
+  { id: 'm18', homeTeamId: '5', awayTeamId: '4', homeScore: null, awayScore: null, date: '2025-05-24T20:40:00Z', status: 'upcoming', round: 5 },
+  { id: 'm19', homeTeamId: '1', awayTeamId: '6', homeScore: null, awayScore: null, date: '2025-05-24T21:00:00Z', status: 'upcoming', round: 5 },
 ];
 
 export function getTeamById(teamId: string, sourceTeams: Team[] = teams): Team | undefined {
@@ -107,14 +107,6 @@ export function calculateStandings(teamsData: Team[], matchesData: Match[]): Sta
 }
 
 // --- Relámpago SAP Data ---
-interface RelampagoEdition {
-  id: string; // e.g., "edicion-1"
-  slug: string; // e.g., "edicion-1" for URL
-  name: string; // e.g., "Edición 1"
-  teams: Team[];
-  matches: Match[];
-  // playoffMatches: Match[]; // Potentially for future playoff structure
-}
 
 export const relampagoEditions: RelampagoEdition[] = [
   {
@@ -134,7 +126,7 @@ export const relampagoEditions: RelampagoEdition[] = [
       // { id: 'rm1', homeTeamId: 'r1', awayTeamId: 'r2', homeScore: null, awayScore: null, date: '2025-06-01T18:00:00Z', status: 'upcoming', round: 1 },
       // { id: 'rm2', homeTeamId: 'r3', awayTeamId: 'r4', homeScore: null, awayScore: null, date: '2025-06-01T18:00:00Z', status: 'upcoming', round: 1 },
     ],
-    // playoffMatches: [],
+    playoffMatches: [],
   },
   // {
   //   id: "edition-2",
