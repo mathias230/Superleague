@@ -13,23 +13,67 @@ export const teams: Team[] = [
 ];
 
 export const matches: Match[] = [
-  // Jornada 6 - Fecha: 31 de mayo, 23:00 Ecuador (UTC-5)
-  { id: 'mJ6-1', homeTeamId: '4', awayTeamId: '6', homeScore: null, awayScore: null, date: '2025-05-31T23:00:00-05:00', status: 'upcoming', round: 6 }, // Wonkru CF vs V07A18
-  { id: 'mJ6-2', homeTeamId: '3', awayTeamId: '2', homeScore: null, awayScore: null, date: '2025-05-31T23:00:00-05:00', status: 'upcoming', round: 6 }, // Barrio Alajuela vs CriminalLife
-  { id: 'mJ6-3', homeTeamId: '5', awayTeamId: '8', homeScore: null, awayScore: null, date: '2025-05-31T23:00:00-05:00', status: 'upcoming', round: 6 }, // Alevatopoca OFC vs Locos Traidores
-  { id: 'mJ6-4', homeTeamId: '7', awayTeamId: '1', homeScore: null, awayScore: null, date: '2025-05-31T23:00:00-05:00', status: 'upcoming', round: 6 }, // La Máquina vs Los Naranjas
+  // Partidos para generar la tabla de la imagen
+  // BA: 5PJ, 4W, 1E, 0L, 13 Pts, DG+10
+  { id: 'mBA1', homeTeamId: '3', awayTeamId: '1', homeScore: 2, awayScore: 0, date: '2025-05-01T00:00:00-05:00', status: 'played', round: 1 }, // BA vs LN
+  { id: 'mBA2', homeTeamId: '3', awayTeamId: '2', homeScore: 2, awayScore: 0, date: '2025-05-02T00:00:00-05:00', status: 'played', round: 2 }, // BA vs CL
+  { id: 'mBA3', homeTeamId: '3', awayTeamId: '4', homeScore: 4, awayScore: 0, date: '2025-05-03T00:00:00-05:00', status: 'played', round: 3 }, // BA vs WCF
+  { id: 'mBA4', homeTeamId: '3', awayTeamId: '6', homeScore: 3, awayScore: 1, date: '2025-05-04T00:00:00-05:00', status: 'played', round: 4 }, // BA vs V07
+  { id: 'mBA5', homeTeamId: '3', awayTeamId: '8', homeScore: 1, awayScore: 1, date: '2025-05-05T00:00:00-05:00', status: 'played', round: 5 }, // BA vs LT (Empate)
 
-  // Jornada 7 - Fecha: 31 de mayo, 23:20 Ecuador (UTC-5)
-  { id: 'mJ7-1', homeTeamId: '8', awayTeamId: '7', homeScore: null, awayScore: null, date: '2025-05-31T23:20:00-05:00', status: 'upcoming', round: 7 }, // Locos Traidores vs La Máquina
-  { id: 'mJ7-2', homeTeamId: '4', awayTeamId: '3', homeScore: null, awayScore: null, date: '2025-05-31T23:20:00-05:00', status: 'upcoming', round: 7 }, // Wonkru CF vs Barrio Alajuela
-  { id: 'mJ7-3', homeTeamId: '6', awayTeamId: '5', homeScore: null, awayScore: null, date: '2025-05-31T23:20:00-05:00', status: 'upcoming', round: 7 }, // V07A18 vs Alevatopoca OFC
-  { id: 'mJ7-4', homeTeamId: '2', awayTeamId: '1', homeScore: null, awayScore: null, date: '2025-05-31T23:20:00-05:00', status: 'upcoming', round: 7 }, // CriminalLife vs Los Naranjas
+  // LT: 5PJ, 4W, 1E, 0L, 13 Pts, DG+5
+  { id: 'mLT1', homeTeamId: '8', awayTeamId: '1', homeScore: 2, awayScore: 0, date: '2025-05-06T00:00:00-05:00', status: 'played', round: 1 }, // LT vs LN
+  { id: 'mLT2', homeTeamId: '8', awayTeamId: '2', homeScore: 1, awayScore: 0, date: '2025-05-07T00:00:00-05:00', status: 'played', round: 2 }, // LT vs CL
+  { id: 'mLT3', homeTeamId: '8', awayTeamId: '5', homeScore: 1, awayScore: 0, date: '2025-05-08T00:00:00-05:00', status: 'played', round: 3 }, // LT vs AOFC
+  { id: 'mLT4', homeTeamId: '8', awayTeamId: '6', homeScore: 1, awayScore: 0, date: '2025-05-09T00:00:00-05:00', status: 'played', round: 4 }, // LT vs V07
+  // Empate LT vs BA ya cubierto en mBA5
 
-  // Jornada 8 - Fecha: 31 de mayo, 23:45 Ecuador (UTC-5)
-  { id: 'mJ8-1', homeTeamId: '2', awayTeamId: '8', homeScore: null, awayScore: null, date: '2025-05-31T23:45:00-05:00', status: 'upcoming', round: 8 }, // CriminalLife vs Locos Traidores
-  { id: 'mJ8-2', homeTeamId: '3', awayTeamId: '6', homeScore: null, awayScore: null, date: '2025-05-31T23:45:00-05:00', status: 'upcoming', round: 8 }, // Barrio Alajuela vs V07A18
-  { id: 'mJ8-3', homeTeamId: '1', awayTeamId: '4', homeScore: null, awayScore: null, date: '2025-05-31T23:45:00-05:00', status: 'upcoming', round: 8 }, // Los Naranjas vs Wonkru CF
-  { id: 'mJ8-4', homeTeamId: '7', awayTeamId: '5', homeScore: null, awayScore: null, date: '2025-05-31T23:45:00-05:00', status: 'upcoming', round: 8 }, // La Máquina vs Alevatopoca OFC
+  // AOFC: 5PJ, 4W, 0D, 1L, 12 Pts, DG+10
+  { id: 'mAOFC1', homeTeamId: '5', awayTeamId: '1', homeScore: 2, awayScore: 0, date: '2025-05-10T00:00:00-05:00', status: 'played', round: 1 }, // AOFC vs LN
+  { id: 'mAOFC2', homeTeamId: '5', awayTeamId: '2', homeScore: 2, awayScore: 0, date: '2025-05-11T00:00:00-05:00', status: 'played', round: 2 }, // AOFC vs CL
+  { id: 'mAOFC3', homeTeamId: '5', awayTeamId: '4', homeScore: 3, awayScore: 0, date: '2025-05-12T00:00:00-05:00', status: 'played', round: 3 }, // AOFC vs WCF
+  { id: 'mAOFC4', homeTeamId: '5', awayTeamId: '7', homeScore: 4, awayScore: 0, date: '2025-05-13T00:00:00-05:00', status: 'played', round: 4 }, // AOFC vs LM
+  // Derrota AOFC vs LT cubierta en mLT3
+
+  // WCF: 4PJ, 2W, 0D, 2L, 6 Pts, DG+1
+  { id: 'mWCF1', homeTeamId: '4', awayTeamId: '1', homeScore: 5, awayScore: 0, date: '2025-05-14T00:00:00-05:00', status: 'played', round: 1 }, // WCF vs LN
+  { id: 'mWCF2', homeTeamId: '4', awayTeamId: '6', homeScore: 3, awayScore: 0, date: '2025-05-15T00:00:00-05:00', status: 'played', round: 2 }, // WCF vs V07
+  // Derrotas WCF vs BA (0-4) y WCF vs AOFC (0-3) cubiertas.
+
+  // CL: 4PJ, 1W, 0D, 3L, 3 Pts, DG-4
+  { id: 'mCL1', homeTeamId: '2', awayTeamId: '6', homeScore: 1, awayScore: 0, date: '2025-05-16T00:00:00-05:00', status: 'played', round: 1 }, // CL vs V07 (Victoria CL)
+  { id: 'mCL2', homeTeamId: '2', awayTeamId: '7', homeScore: 1, awayScore: 0, date: '2025-05-19T00:00:00-05:00', status: 'played', round: 5 }, // CL vs LM (Este era LM3, ahora es CL2 para su 4to PJ, Asumiendo LM pierde aqui)
+  // Derrotas CL vs BA (0-2), CL vs LT (0-1), CL vs AOFC (0-2) cubiertas.
+  // CL necesita 4PJ. CL vs V07(W), BA(L), LT(L), AOFC(L). mCL2 no es necesario para CL, sino para LM.
+
+  // LM: 5PJ, 1W, 0D, 4L, 3 Pts, DG-5
+  { id: 'mLM1', homeTeamId: '7', awayTeamId: '1', homeScore: 2, awayScore: 0, date: '2025-05-17T00:00:00-05:00', status: 'played', round: 1 }, // LM vs LN (Victoria LM)
+  // Derrota LM vs AOFC (0-4) cubierta en mAOFC4
+  // Derrotas LM adicionales:
+  { id: 'mLM-vs-BA', homeTeamId: '3', awayTeamId: '7', homeScore: 2, awayScore: 0, date: '2025-05-18T00:00:00-05:00', status: 'played', round: 5 }, // BA vs LM (Derrota LM)
+  { id: 'mLM-vs-CL', homeTeamId: '2', awayTeamId: '7', homeScore: 1, awayScore: 0, date: '2025-05-19T00:00:00-05:00', status: 'played', round: 5 }, // CL vs LM (Derrota LM, este es el 4to partido de CL)
+  { id: 'mLM-vs-V07', homeTeamId: '6', awayTeamId: '7', homeScore: 2, awayScore: 0, date: '2025-05-20T00:00:00-05:00', status: 'played', round: 5 }, // V07 vs LM (Derrota LM)
+
+  // V07: 5PJ, 1W, 0D, 4L, 3 Pts, DG-6
+  // Victoria V07 vs LM (2-0) cubierta en mLM-vs-V07.
+  // Derrotas V07 vs BA (1-3), V07 vs LT (0-1), V07 vs WCF (0-3), V07 vs CL (0-1) cubiertas.
+
+  // LN: 5PJ, 0W, 0D, 5L, 0 Pts, DG-11
+  // Derrotas LN vs BA (0-2), LN vs LT (0-2), LN vs AOFC (0-2), LN vs WCF (0-5), LN vs LM (0-2) cubiertas.
+
+  // Partidos del Calendario (Jornadas 6, 7, 8 - upcoming)
+  { id: 'mJ6-1', homeTeamId: '4', awayTeamId: '6', homeScore: null, awayScore: null, date: '2025-05-31T23:00:00-05:00', status: 'upcoming', round: 6 },
+  { id: 'mJ6-2', homeTeamId: '3', awayTeamId: '2', homeScore: null, awayScore: null, date: '2025-05-31T23:00:00-05:00', status: 'upcoming', round: 6 },
+  { id: 'mJ6-3', homeTeamId: '5', awayTeamId: '8', homeScore: null, awayScore: null, date: '2025-05-31T23:00:00-05:00', status: 'upcoming', round: 6 },
+  { id: 'mJ6-4', homeTeamId: '7', awayTeamId: '1', homeScore: null, awayScore: null, date: '2025-05-31T23:00:00-05:00', status: 'upcoming', round: 6 },
+  { id: 'mJ7-1', homeTeamId: '8', awayTeamId: '7', homeScore: null, awayScore: null, date: '2025-05-31T23:20:00-05:00', status: 'upcoming', round: 7 },
+  { id: 'mJ7-2', homeTeamId: '4', awayTeamId: '3', homeScore: null, awayScore: null, date: '2025-05-31T23:20:00-05:00', status: 'upcoming', round: 7 },
+  { id: 'mJ7-3', homeTeamId: '6', awayTeamId: '5', homeScore: null, awayScore: null, date: '2025-05-31T23:20:00-05:00', status: 'upcoming', round: 7 },
+  { id: 'mJ7-4', homeTeamId: '2', awayTeamId: '1', homeScore: null, awayScore: null, date: '2025-05-31T23:20:00-05:00', status: 'upcoming', round: 7 },
+  { id: 'mJ8-1', homeTeamId: '2', awayTeamId: '8', homeScore: null, awayScore: null, date: '2025-05-31T23:45:00-05:00', status: 'upcoming', round: 8 },
+  { id: 'mJ8-2', homeTeamId: '3', awayTeamId: '6', homeScore: null, awayScore: null, date: '2025-05-31T23:45:00-05:00', status: 'upcoming', round: 8 },
+  { id: 'mJ8-3', homeTeamId: '1', awayTeamId: '4', homeScore: null, awayScore: null, date: '2025-05-31T23:45:00-05:00', status: 'upcoming', round: 8 },
+  { id: 'mJ8-4', homeTeamId: '7', awayTeamId: '5', homeScore: null, awayScore: null, date: '2025-05-31T23:45:00-05:00', status: 'upcoming', round: 8 },
 ];
 
 export function getTeamById(teamId: string, sourceTeams: Team[] = teams): Team | undefined {
@@ -154,3 +198,6 @@ export function getRelampagoEditionBySlug(slug: string): RelampagoEdition | unde
 
 
 
+
+
+    
