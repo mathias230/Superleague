@@ -4,14 +4,17 @@
 "use client"; // Required for useState, useEffect, and event handlers in Tabs
 
 import { useEffect, useState, use } from 'react'; // Import 'use'
-import { notFound } from 'next/navigation'; // To handle case where editionId is not found
+import Link from 'next/link';
+import { notFound, useRouter } from 'next/navigation'; // To handle case where editionId is not found
 import { PageHeader } from "@/components/page-header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
 import { LeagueTable } from "@/components/league-table";
 import { MatchCard } from "@/components/match-card";
 import { getRelampagoEditionBySlug, calculateStandings, getTeamById } from "@/lib/data";
 import type { Match as MatchType, Team, StandingEntry, RelampagoEdition as RelampagoEditionType } from "@/lib/types"; // Adjusted import
+import { ArrowLeftIcon } from 'lucide-react';
 
 // Helper function to group matches by round
 const groupMatchesByRound = (matches: MatchType[]): Record<number, MatchType[]> => {
@@ -33,12 +36,12 @@ interface RelampagoEditionPageProps {
 
 export default function RelampagoEditionPage({ params: paramsPromise }: RelampagoEditionPageProps) { // Rename prop
   const params = use(paramsPromise); // Unwrap the promise
+  const router = useRouter();
 
   const [edition, setEdition] = useState<RelampagoEditionType | null | undefined>(undefined); // undefined for loading, null if not found
   const [standings, setStandings] = useState<StandingEntry[]>([]);
   const [upcomingMatches, setUpcomingMatches] = useState<MatchType[]>([]);
   const [playedMatches, setPlayedMatches] = useState<MatchType[]>([]);
-  // For now, playoff matches will be empty. We can populate this later.
   const [playoffMatches, setPlayoffMatches] = useState<MatchType[]>([]);
 
 
@@ -51,12 +54,11 @@ export default function RelampagoEditionPage({ params: paramsPromise }: Relampag
       setStandings(calculatedStandings);
       setUpcomingMatches(foundEdition.matches.filter(match => match.status === 'upcoming'));
       setPlayedMatches(foundEdition.matches.filter(match => match.status === 'played'));
-      setPlayoffMatches(foundEdition.playoffMatches || []); // Assuming playoffMatches is part of RelampagoEditionType
+      setPlayoffMatches(foundEdition.playoffMatches || []);
     }
   }, [params.editionId]); // Dependency on resolved params.editionId
 
   if (edition === undefined) {
-    // Loading state
     return (
       <main className="flex flex-1 flex-col">
         <PageHeader title="Cargando Torneo..." />
@@ -68,8 +70,7 @@ export default function RelampagoEditionPage({ params: paramsPromise }: Relampag
   }
 
   if (edition === null) {
-    // Edition not found
-    notFound(); // This will render the not-found.tsx page or a default Next.js 404 page
+    notFound();
   }
   
   const pageTitle = `Relámpago SAP: ${edition.name}`;
@@ -83,6 +84,15 @@ export default function RelampagoEditionPage({ params: paramsPromise }: Relampag
     <main className="flex flex-1 flex-col">
       <PageHeader title={pageTitle} />
       <div className="flex-1 animate-in fade-in duration-500 p-4 md:p-6">
+        <div className="mb-6">
+          <Button variant="outline" asChild>
+            <Link href="/relampago">
+              <ArrowLeftIcon className="mr-2 h-4 w-4" />
+              Volver a la Lista de Ediciones
+            </Link>
+          </Button>
+        </div>
+
         <Tabs defaultValue="classification" className="w-full">
           <TabsList className="grid w-full grid-cols-4 mb-6">
             <TabsTrigger value="classification">Clasificación</TabsTrigger>
@@ -184,13 +194,4 @@ export default function RelampagoEditionPage({ params: paramsPromise }: Relampag
     </main>
   );
 }
-
-// Optional: Generate static paths for known editions if you want to pre-render them
-// export async function generateStaticParams() {
-//   const { relampagoEditions } = await import('@/lib/data'); // Adjust import path if needed
-//   return relampagoEditions.map((edition) => ({
-//     editionId: edition.slug,
-//   }));
-// }
-
     
