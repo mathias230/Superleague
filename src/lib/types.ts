@@ -1,3 +1,4 @@
+
 export interface Team {
   id: string;
   name: string;
@@ -28,3 +29,14 @@ export interface StandingEntry {
   goalDifference: number;
   points: number;
 }
+
+export interface RelampagoEdition {
+  id: string;
+  slug: string;
+  name: string;
+  teams: Team[];
+  matches: Match[];
+  playoffMatches?: Match[]; // Optional for now
+}
+
+    

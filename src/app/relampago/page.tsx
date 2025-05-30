@@ -1,148 +1,62 @@
 
+import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { LeagueTable } from "@/components/league-table";
-import { MatchCard } from "@/components/match-card";
-import {
-  relampagoTeams,
-  relampagoMatches,
-  calculateRelampagoStandings,
-  getRelampagoTeamById,
-} from "@/lib/data";
-import type { Match as MatchType, Team } from "@/lib/types"; // Renamed Match to MatchType to avoid conflict
+import { Button } from "@/components/ui/button";
+import { List } from "lucide-react";
+import { relampagoEditions } from "@/lib/data";
 
-// Helper function to group matches by round
-const groupMatchesByRound = (matches: MatchType[]): Record<number, MatchType[]> => {
-  return matches.reduce((acc, match) => {
-    const round = match.round || 0; // Default to round 0 if undefined
-    if (!acc[round]) {
-      acc[round] = [];
-    }
-    acc[round].push(match);
-    return acc;
-  }, {} as Record<number, MatchType[]>);
-};
-
-export default function RelampagoPage() {
-  const standings = calculateRelampagoStandings(relampagoTeams, relampagoMatches);
-  
-  const upcomingRelampagoMatches = relampagoMatches.filter(match => match.status === 'upcoming');
-  const playedRelampagoMatches = relampagoMatches.filter(match => match.status === 'played');
-
-  const groupedUpcomingMatches = groupMatchesByRound(upcomingRelampagoMatches);
-  const sortedUpcomingRounds = Object.keys(groupedUpcomingMatches).map(Number).sort((a, b) => a - b);
-
-  const groupedPlayedMatches = groupMatchesByRound(playedRelampagoMatches);
-  const sortedPlayedRounds = Object.keys(groupedPlayedMatches).map(Number).sort((a, b) => a - b);
-
-  // For now, playoff matches will be empty. We can populate this later.
-  const playoffMatches: MatchType[] = []; 
-
+export default function RelampagoLandingPage() {
   return (
     <main className="flex flex-1 flex-col">
-      <PageHeader title="Relámpago SAP Edición 1" />
-      <div className="flex-1 animate-in fade-in duration-500 p-4 md:p-6">
-        <Tabs defaultValue="classification" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 mb-6"> {/* Changed to grid-cols-4 */}
-            <TabsTrigger value="classification">Clasificación</TabsTrigger>
-            <TabsTrigger value="pending">Partidos Pendientes</TabsTrigger>
-            <TabsTrigger value="played">Partidos Jugados</TabsTrigger>
-            <TabsTrigger value="playoffs">Eliminatorias</TabsTrigger> {/* New Tab Trigger */}
-          </TabsList>
-          
-          <TabsContent value="classification">
-            <LeagueTable standings={standings} title="Clasificación - Relámpago SAP Ed. 1" />
-          </TabsContent>
-          
-          <TabsContent value="pending">
-            <Card>
-              <CardHeader>
-                <CardTitle>Partidos Pendientes - Relámpago</CardTitle>
-                <CardDescription>Próximos encuentros del torneo relámpago.</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                {upcomingRelampagoMatches.length > 0 ? (
-                  sortedUpcomingRounds.map(roundNumber => (
-                    <section key={`upcoming-round-${roundNumber}`}>
-                      <h3 className="text-xl font-semibold mb-3 text-primary">Jornada {roundNumber}</h3>
-                      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                        {groupedUpcomingMatches[roundNumber]
-                          .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-                          .map((match: MatchType) => {
-                            const homeTeam = getRelampagoTeamById(match.homeTeamId);
-                            const awayTeam = getRelampagoTeamById(match.awayTeamId);
-                            if (!homeTeam || !awayTeam) return null;
-                            return <MatchCard key={match.id} match={match} homeTeam={homeTeam} awayTeam={awayTeam} />;
-                          })}
-                      </div>
-                    </section>
-                  ))
-                ) : (
-                  <p className="text-center text-muted-foreground">No hay partidos pendientes en el torneo relámpago.</p>
-                )}
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="played">
-            <Card>
-              <CardHeader>
-                <CardTitle>Partidos Jugados - Relámpago</CardTitle>
-                <CardDescription>Resultados de los encuentros del torneo relámpago.</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                {playedRelampagoMatches.length > 0 ? (
-                  sortedPlayedRounds.map(roundNumber => (
-                     <section key={`played-round-${roundNumber}`}>
-                      <h3 className="text-xl font-semibold mb-3 text-primary">Jornada {roundNumber}</h3>
-                      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                        {groupedPlayedMatches[roundNumber]
-                          .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-                          .map((match: MatchType) => {
-                            const homeTeam = getRelampagoTeamById(match.homeTeamId);
-                            const awayTeam = getRelampagoTeamById(match.awayTeamId);
-                            if (!homeTeam || !awayTeam) return null;
-                            return <MatchCard key={match.id} match={match} homeTeam={homeTeam} awayTeam={awayTeam} />;
-                          })}
-                      </div>
-                    </section>
-                  ))
-                ) : (
-                  <p className="text-center text-muted-foreground">No se han jugado partidos en el torneo relámpago aún.</p>
-                )}
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* New Tab Content for Playoffs */}
-          <TabsContent value="playoffs">
-            <Card>
-              <CardHeader>
-                <CardTitle>Eliminatorias - Relámpago SAP Ed. 1</CardTitle>
-                <CardDescription>Llaves y resultados de la fase de eliminación directa.</CardDescription>
-              </CardHeader>
-              <CardContent>
-                {playoffMatches.length > 0 ? (
-                  //  Here you would map through playoffMatches and display them, perhaps with a bracket component later
-                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                    {playoffMatches.map((match: MatchType) => {
-                        const homeTeam = getRelampagoTeamById(match.homeTeamId);
-                        const awayTeam = getRelampagoTeamById(match.awayTeamId);
-                        if (!homeTeam || !awayTeam) return null;
-                        return <MatchCard key={match.id} match={match} homeTeam={homeTeam} awayTeam={awayTeam} />;
-                      })}
-                  </div>
-                ) : (
-                  <p className="text-center text-muted-foreground">
-                    Las eliminatorias aún no han comenzado o no hay partidos definidos.
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+      <PageHeader title="Torneos Relámpago SAP" />
+      <div className="flex-1 animate-in fade-in duration-500 p-4 md:p-6 space-y-6">
+        <Card className="shadow-lg">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-primary">Ediciones del Torneo</CardTitle>
+            <CardDescription className="text-card-foreground">
+              Selecciona una edición para ver su clasificación, partidos y resultados.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            {relampagoEditions.length > 0 ? (
+              <ul className="space-y-3">
+                {relampagoEditions.map((edition) => (
+                  <li key={edition.id}>
+                    <Button variant="outline" className="w-full justify-start text-left h-auto py-3" asChild>
+                      <Link href={`/relampago/${edition.slug}`}>
+                        <List className="mr-2 h-5 w-5 text-primary" />
+                        <div>
+                          <p className="font-semibold text-lg">Relámpago SAP: {edition.name}</p>
+                          <p className="text-xs text-muted-foreground">Ver detalles del torneo</p>
+                        </div>
+                      </Link>
+                    </Button>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-center text-muted-foreground">No hay ediciones del torneo relámpago disponibles.</p>
+            )}
+          </CardContent>
+        </Card>
+        
+        {/* You can add a button or section here to explain how to add new editions if needed */}
+        {/* For example:
+        <Card>
+          <CardHeader>
+            <CardTitle>Administrar Ediciones</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-muted-foreground">
+              Actualmente, las nuevas ediciones se añaden modificando el archivo <code>src/lib/data.ts</code>.
+            </p>
+          </CardContent>
+        </Card>
+        */}
       </div>
     </main>
   );
 }
+
+    
