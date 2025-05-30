@@ -3,7 +3,7 @@
 // For example: /relampago/edicion-1
 "use client"; // Required for useState, useEffect, and event handlers in Tabs
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, use } from 'react'; // Import 'use'
 import { notFound } from 'next/navigation'; // To handle case where editionId is not found
 import { PageHeader } from "@/components/page-header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -26,12 +26,14 @@ const groupMatchesByRound = (matches: MatchType[]): Record<number, MatchType[]> 
 };
 
 interface RelampagoEditionPageProps {
-  params: {
+  params: Promise<{ // Type params as a Promise
     editionId: string; // This will be the slug, e.g., "edicion-1"
-  };
+  }>;
 }
 
-export default function RelampagoEditionPage({ params }: RelampagoEditionPageProps) {
+export default function RelampagoEditionPage({ params: paramsPromise }: RelampagoEditionPageProps) { // Rename prop
+  const params = use(paramsPromise); // Unwrap the promise
+
   const [edition, setEdition] = useState<RelampagoEditionType | null | undefined>(undefined); // undefined for loading, null if not found
   const [standings, setStandings] = useState<StandingEntry[]>([]);
   const [upcomingMatches, setUpcomingMatches] = useState<MatchType[]>([]);
@@ -41,7 +43,7 @@ export default function RelampagoEditionPage({ params }: RelampagoEditionPagePro
 
 
   useEffect(() => {
-    const foundEdition = getRelampagoEditionBySlug(params.editionId);
+    const foundEdition = getRelampagoEditionBySlug(params.editionId); // params.editionId is now from resolved params
     setEdition(foundEdition);
 
     if (foundEdition) {
@@ -49,9 +51,9 @@ export default function RelampagoEditionPage({ params }: RelampagoEditionPagePro
       setStandings(calculatedStandings);
       setUpcomingMatches(foundEdition.matches.filter(match => match.status === 'upcoming'));
       setPlayedMatches(foundEdition.matches.filter(match => match.status === 'played'));
-      // setPlayoffMatches(foundEdition.playoffMatches || []); // Assuming playoffMatches is part of RelampagoEditionType
+      setPlayoffMatches(foundEdition.playoffMatches || []); // Assuming playoffMatches is part of RelampagoEditionType
     }
-  }, [params.editionId]);
+  }, [params.editionId]); // Dependency on resolved params.editionId
 
   if (edition === undefined) {
     // Loading state
