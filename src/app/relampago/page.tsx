@@ -36,15 +36,19 @@ export default function RelampagoPage() {
   const groupedPlayedMatches = groupMatchesByRound(playedRelampagoMatches);
   const sortedPlayedRounds = Object.keys(groupedPlayedMatches).map(Number).sort((a, b) => a - b);
 
+  // For now, playoff matches will be empty. We can populate this later.
+  const playoffMatches: MatchType[] = []; 
+
   return (
     <main className="flex flex-1 flex-col">
       <PageHeader title="Relámpago SAP Edición 1" />
       <div className="flex-1 animate-in fade-in duration-500 p-4 md:p-6">
         <Tabs defaultValue="classification" className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-6">
+          <TabsList className="grid w-full grid-cols-4 mb-6"> {/* Changed to grid-cols-4 */}
             <TabsTrigger value="classification">Clasificación</TabsTrigger>
             <TabsTrigger value="pending">Partidos Pendientes</TabsTrigger>
             <TabsTrigger value="played">Partidos Jugados</TabsTrigger>
+            <TabsTrigger value="playoffs">Eliminatorias</TabsTrigger> {/* New Tab Trigger */}
           </TabsList>
           
           <TabsContent value="classification">
@@ -106,6 +110,33 @@ export default function RelampagoPage() {
                   ))
                 ) : (
                   <p className="text-center text-muted-foreground">No se han jugado partidos en el torneo relámpago aún.</p>
+                )}
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* New Tab Content for Playoffs */}
+          <TabsContent value="playoffs">
+            <Card>
+              <CardHeader>
+                <CardTitle>Eliminatorias - Relámpago SAP Ed. 1</CardTitle>
+                <CardDescription>Llaves y resultados de la fase de eliminación directa.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                {playoffMatches.length > 0 ? (
+                  //  Here you would map through playoffMatches and display them, perhaps with a bracket component later
+                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                    {playoffMatches.map((match: MatchType) => {
+                        const homeTeam = getRelampagoTeamById(match.homeTeamId);
+                        const awayTeam = getRelampagoTeamById(match.awayTeamId);
+                        if (!homeTeam || !awayTeam) return null;
+                        return <MatchCard key={match.id} match={match} homeTeam={homeTeam} awayTeam={awayTeam} />;
+                      })}
+                  </div>
+                ) : (
+                  <p className="text-center text-muted-foreground">
+                    Las eliminatorias aún no han comenzado o no hay partidos definidos.
+                  </p>
                 )}
               </CardContent>
             </Card>
