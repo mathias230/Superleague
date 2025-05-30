@@ -13,28 +13,27 @@ export const teams: Team[] = [
 ];
 
 export const matches: Match[] = [
-  // Adjusted existing matches (m1-m12)
-  { id: 'm1', homeTeamId: '5', awayTeamId: '7', homeScore: 1, awayScore: 0, date: '2025-05-24T23:00:00Z', status: 'played', round: 1 }, // Alev W vs LM L
-  { id: 'm2', homeTeamId: '8', awayTeamId: '2', homeScore: 1, awayScore: 0, date: '2025-05-24T23:00:00Z', status: 'played', round: 1 }, // LT W vs Crim L
-  { id: 'm3', homeTeamId: '4', awayTeamId: '1', homeScore: 1, awayScore: 0, date: '2025-05-24T23:00:00Z', status: 'played', round: 1 }, // Wonkru W vs LN L
-  { id: 'm4', homeTeamId: '6', awayTeamId: '3', homeScore: 0, awayScore: 1, date: '2025-05-24T23:00:00Z', status: 'played', round: 1 }, // V07 L vs BA W
-  { id: 'm5', homeTeamId: '8', awayTeamId: '4', homeScore: 1, awayScore: 0, date: '2025-05-24T23:20:00Z', status: 'played', round: 2 }, // LT W vs Wonkru L
-  { id: 'm6', homeTeamId: '7', awayTeamId: '6', homeScore: 1, awayScore: 0, date: '2025-05-24T23:20:00Z', status: 'played', round: 2 }, // LM W vs V07 L
-  { id: 'm7', homeTeamId: '1', awayTeamId: '3', homeScore: 0, awayScore: 1, date: '2025-05-24T23:20:00Z', status: 'played', round: 2 }, // LN L vs BA W
-  { id: 'm8', homeTeamId: '2', awayTeamId: '5', homeScore: 0, awayScore: 1, date: '2025-05-24T23:20:00Z', status: 'played', round: 2 }, // Crim L vs Alev W
-  { id: 'm9', homeTeamId: '7', awayTeamId: '2', homeScore: 0, awayScore: 1, date: '2025-05-24T23:40:00Z', status: 'played', round: 3 }, // LM L vs Crim W
-  { id: 'm10', homeTeamId: '5', awayTeamId: '4', homeScore: 1, awayScore: 0, date: '2025-05-24T23:40:00Z', status: 'played', round: 3 }, // Alev W vs Wonkru L
-  { id: 'm11', homeTeamId: '3', awayTeamId: '8', homeScore: 1, awayScore: 1, date: '2025-05-24T23:40:00Z', status: 'played', round: 3 }, // BA D vs LT D
-  { id: 'm12', homeTeamId: '6', awayTeamId: '1', homeScore: 1, awayScore: 0, date: '2025-05-24T23:40:00Z', status: 'played', round: 3 }, // V07 W vs LN L
+  // Scores adjusted to match the provided league table image exactly
+  { id: 'm1', homeTeamId: '5', awayTeamId: '7', homeScore: 2, awayScore: 0, date: '2025-05-24T23:00:00Z', status: 'played', round: 1 }, // Alev (5) 2-0 LM (7)
+  { id: 'm2', homeTeamId: '8', awayTeamId: '2', homeScore: 1, awayScore: 0, date: '2025-05-24T23:00:00Z', status: 'played', round: 1 }, // LT (8) 1-0 Crim (2)
+  { id: 'm3', homeTeamId: '4', awayTeamId: '1', homeScore: 1, awayScore: 0, date: '2025-05-24T23:00:00Z', status: 'played', round: 1 }, // Wonkru (4) 1-0 LN (1)
+  { id: 'm4', homeTeamId: '6', awayTeamId: '3', homeScore: 0, awayScore: 2, date: '2025-05-24T23:00:00Z', status: 'played', round: 1 }, // V07 (6) 0-2 BA (3)
+  { id: 'm5', homeTeamId: '8', awayTeamId: '4', homeScore: 2, awayScore: 0, date: '2025-05-24T23:20:00Z', status: 'played', round: 2 }, // LT (8) 2-0 Wonkru (4)
+  { id: 'm6', homeTeamId: '7', awayTeamId: '6', homeScore: 2, awayScore: 0, date: '2025-05-24T23:20:00Z', status: 'played', round: 2 }, // LM (7) 2-0 V07 (6)
+  { id: 'm7', homeTeamId: '1', awayTeamId: '3', homeScore: 0, awayScore: 3, date: '2025-05-24T23:20:00Z', status: 'played', round: 2 }, // LN (1) 0-3 BA (3)
+  { id: 'm8', homeTeamId: '2', awayTeamId: '5', homeScore: 0, awayScore: 2, date: '2025-05-24T23:20:00Z', status: 'played', round: 2 }, // Crim (2) 0-2 Alev (5)
+  { id: 'm9', homeTeamId: '7', awayTeamId: '2', homeScore: 0, awayScore: 2, date: '2025-05-24T23:40:00Z', status: 'played', round: 3 }, // LM (7) 0-2 Crim (2)
+  { id: 'm10', homeTeamId: '5', awayTeamId: '4', homeScore: 2, awayScore: 0, date: '2025-05-24T23:40:00Z', status: 'played', round: 3 }, // Alev (5) 2-0 Wonkru (4)
+  { id: 'm11', homeTeamId: '3', awayTeamId: '8', homeScore: 1, awayScore: 1, date: '2025-05-24T23:40:00Z', status: 'played', round: 3 }, // BA (3) 1-1 LT (8)
+  { id: 'm12', homeTeamId: '6', awayTeamId: '1', homeScore: 1, awayScore: 0, date: '2025-05-24T23:40:00Z', status: 'played', round: 3 }, // V07 (6) 1-0 LN (1)
 
-  // New matches (m13-m19) to complete standings
-  { id: 'm13', homeTeamId: '3', awayTeamId: '2', homeScore: 1, awayScore: 0, date: '2025-05-25T20:00:00Z', status: 'played', round: 4 }, // BA W vs Crim L (BA:3W1D, Crim:1W3L - Crim Done)
-  { id: 'm14', homeTeamId: '3', awayTeamId: '7', homeScore: 1, awayScore: 0, date: '2025-05-25T20:00:00Z', status: 'played', round: 4 }, // BA W vs LM L (BA:4W1D - BA Done, LM:1W3L)
-  { id: 'm15', homeTeamId: '8', awayTeamId: '7', homeScore: 1, awayScore: 0, date: '2025-05-25T20:20:00Z', status: 'played', round: 4 }, // LT W vs LM L (LT:3W1D, LM:1W4L - LM Done)
-  { id: 'm16', homeTeamId: '8', awayTeamId: '6', homeScore: 1, awayScore: 0, date: '2025-05-25T20:20:00Z', status: 'played', round: 4 }, // LT W vs V07 L (LT:4W1D - LT Done, V07:1W3L)
-  { id: 'm17', homeTeamId: '5', awayTeamId: '1', homeScore: 1, awayScore: 0, date: '2025-05-25T20:40:00Z', status: 'played', round: 5 }, // Alev W vs LN L (Alev:4W, LN:4L)
-  { id: 'm18', homeTeamId: '5', awayTeamId: '4', homeScore: 0, awayScore: 1, date: '2025-05-25T20:40:00Z', status: 'played', round: 5 }, // Alev L vs Wonkru W (Alev:4W1L - Alev Done, Wonkru:2W2L - Wonkru Done)
-  { id: 'm19', homeTeamId: '1', awayTeamId: '6', homeScore: 1, awayScore: 0, date: '2025-05-25T21:00:00Z', status: 'played', round: 5 }, // LN W vs V07 L (LN:1W4L - LN Done, V07:1W4L - V07 Done)
+  { id: 'm13', homeTeamId: '3', awayTeamId: '2', homeScore: 2, awayScore: 0, date: '2025-05-25T20:00:00Z', status: 'played', round: 4 }, // BA (3) 2-0 Crim (2)
+  { id: 'm14', homeTeamId: '3', awayTeamId: '7', homeScore: 1, awayScore: 0, date: '2025-05-25T20:00:00Z', status: 'played', round: 4 }, // BA (3) 1-0 LM (7)
+  { id: 'm15', homeTeamId: '8', awayTeamId: '7', homeScore: 2, awayScore: 0, date: '2025-05-25T20:20:00Z', status: 'played', round: 4 }, // LT (8) 2-0 LM (7)
+  { id: 'm16', homeTeamId: '8', awayTeamId: '6', homeScore: 1, awayScore: 0, date: '2025-05-25T20:20:00Z', status: 'played', round: 4 }, // LT (8) 1-0 V07 (6)
+  { id: 'm17', homeTeamId: '5', awayTeamId: '1', homeScore: 2, awayScore: 0, date: '2025-05-25T20:40:00Z', status: 'played', round: 5 }, // Alev (5) 2-0 LN (1)
+  { id: 'm18', homeTeamId: '5', awayTeamId: '4', homeScore: 0, awayScore: 1, date: '2025-05-25T20:40:00Z', status: 'played', round: 5 }, // Alev (5) 0-1 Wonkru (4)
+  { id: 'm19', homeTeamId: '1', awayTeamId: '6', homeScore: 1, awayScore: 0, date: '2025-05-25T21:00:00Z', status: 'played', round: 5 }, // LN (1) 1-0 V07 (6)
 ];
 
 export function getTeamById(teamId: string): Team | undefined {
@@ -98,6 +97,7 @@ export function calculateStandings(teamsData: Team[], matchesData: Match[]): Sta
     standings.push(standing);
   });
 
+  // Ordenar según: Puntos (desc), DG (desc), GF (desc), Nombre del equipo (asc)
   standings.sort((a, b) => {
     if (b.points !== a.points) return b.points - a.points;
     if (b.goalDifference !== a.goalDifference) return b.goalDifference - a.goalDifference;
@@ -195,5 +195,7 @@ export function calculateRelampagoStandings(teamsData: Team[], matchesData: Matc
 
   return standings;
 }
+
+    
 
     
