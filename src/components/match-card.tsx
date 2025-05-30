@@ -12,8 +12,19 @@ interface MatchCardProps {
 
 export function MatchCard({ match, homeTeam, awayTeam }: MatchCardProps) {
   const matchDate = new Date(match.date);
-  const formattedDate = matchDate.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
-  const formattedTime = matchDate.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+  // Format date and time using Ecuador's timezone (America/Guayaquil) and Spanish locale
+  const formattedDate = matchDate.toLocaleDateString('es-EC', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric', 
+    timeZone: 'America/Guayaquil' 
+  });
+  const formattedTime = matchDate.toLocaleTimeString('es-EC', { 
+    hour: '2-digit', 
+    minute: '2-digit', 
+    timeZone: 'America/Guayaquil',
+    hour12: false // Use 24-hour format e.g., 23:00
+  });
 
   return (
     <Card className="shadow-md hover:shadow-lg transition-shadow duration-200 flex flex-col">
