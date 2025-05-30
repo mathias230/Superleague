@@ -26,7 +26,7 @@ export default function RelampagoLandingPage() {
                     <Button variant="outline" className="w-full justify-start text-left h-auto py-3" asChild>
                       <Link href={`/relampago/${edition.slug}`}>
                         <List className="mr-2 h-5 w-5 text-primary" />
-                        <div>
+                        <div className="text-foreground"> {/* Added text-foreground here */}
                           <p className="font-semibold text-lg">Relámpago SAP: {edition.name}</p>
                           <p className="text-xs text-muted-foreground">Ver detalles del torneo</p>
                         </div>
