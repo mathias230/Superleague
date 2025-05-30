@@ -1,13 +1,16 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TeamDisplay } from "@/components/team-display";
-import { getTeamById } from "@/lib/data";
-import type { Match } from "@/lib/types";
+import type { Match, Team } from "@/lib/types";
 import { CalendarIcon, ClockIcon } from "lucide-react";
 
-export function MatchCard({ match }: { match: Match }) {
-  const homeTeam = getTeamById(match.homeTeamId);
-  const awayTeam = getTeamById(match.awayTeamId);
+interface MatchCardProps {
+  match: Match;
+  homeTeam?: Team;
+  awayTeam?: Team;
+}
 
+export function MatchCard({ match, homeTeam, awayTeam }: MatchCardProps) {
   const matchDate = new Date(match.date);
   const formattedDate = matchDate.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
   const formattedTime = matchDate.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });

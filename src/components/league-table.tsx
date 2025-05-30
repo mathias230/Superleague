@@ -1,3 +1,4 @@
+
 import {
   Table,
   TableBody,
@@ -8,16 +9,18 @@ import {
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TeamDisplay } from "@/components/team-display";
-import { calculateStandings, teams as allTeams, matches as allMatches } from "@/lib/data";
 import type { StandingEntry } from "@/lib/types";
 
-export function LeagueTable() {
-  const standings = calculateStandings(allTeams, allMatches);
+interface LeagueTableProps {
+  standings: StandingEntry[];
+  title?: string;
+}
 
+export function LeagueTable({ standings, title = "Tabla de Posiciones" }: LeagueTableProps) {
   return (
     <Card className="shadow-lg">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold text-center text-primary">Tabla de Posiciones</CardTitle>
+        <CardTitle className="text-2xl font-bold text-center text-primary">{title}</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="overflow-x-auto">
@@ -56,6 +59,9 @@ export function LeagueTable() {
             </TableBody>
           </Table>
         </div>
+         {standings.length === 0 && (
+          <p className="text-center text-muted-foreground py-4">No hay datos de clasificación para mostrar.</p>
+        )}
       </CardContent>
     </Card>
   );
