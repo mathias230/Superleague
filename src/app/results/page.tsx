@@ -16,8 +16,9 @@ const groupMatchesByRound = (matches: Match[]): Record<number, Match[]> => {
 };
 
 export default function MatchResultsPage() {
+  // Filter for played matches from round 6 onwards
   const playedMatches = allMatches
-    .filter(match => match.status === 'played');
+    .filter(match => match.status === 'played' && (match.round || 0) >= 6);
 
   const groupedMatches = groupMatchesByRound(playedMatches);
   const sortedRounds = Object.keys(groupedMatches)
