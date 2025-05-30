@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Trophy, ListChecks, CalendarDays, InfoIcon, Settings } from 'lucide-react'; // Added Settings
+import { Trophy, ListChecks, CalendarDays, InfoIcon, Zap } from 'lucide-react'; // Added Zap, removed Settings
 import {
   SidebarMenu,
   SidebarMenuItem,
@@ -17,7 +17,7 @@ const navItems = [
   { href: '/results', label: 'Resultados', icon: ListChecks },
   { href: '/schedule', label: 'Calendario', icon: CalendarDays },
   { href: '/info', label: 'Información', icon: InfoIcon },
-  { href: '/admin', label: 'Administración', icon: Settings }, // Added Admin link
+  { href: '/relampago', label: 'Relámpago SAP', icon: Zap }, // Added Relampago link
 ];
 
 export function SidebarNav() {
@@ -37,7 +37,7 @@ export function SidebarNav() {
           <Link href={item.href} passHref legacyBehavior onClick={handleLinkClick}>
             <SidebarMenuButton
               asChild
-              isActive={pathname.startsWith(item.href) && (item.href !== '/' || pathname === '/')} // Adjusted isActive for parent routes
+              isActive={pathname.startsWith(item.href) && (item.href !== '/' || pathname === '/')}
               className={cn(
                 "w-full justify-start",
                 (pathname.startsWith(item.href) && (item.href !== '/' || pathname === '/')) ? "bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90" : "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
@@ -55,3 +55,4 @@ export function SidebarNav() {
     </SidebarMenu>
   );
 }
+
