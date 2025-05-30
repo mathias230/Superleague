@@ -1,35 +1,36 @@
 
 import { PageHeader } from "@/components/page-header";
-// import { MatchCard } from "@/components/match-card";
-// import { matches as allMatches, getTeamById } from "@/lib/data";
-// import type { Match, Team } from "@/lib/types";
+import { MatchCard } from "@/components/match-card";
+import { matches as allMatches, getTeamById } from "@/lib/data";
+import type { Match, Team } from "@/lib/types";
 
-// const groupMatchesByRound = (matches: Match[]): Record<number, Match[]> => {
-//   return matches.reduce((acc, match) => {
-//     const round = match.round || 0;
-//     if (!acc[round]) {
-//       acc[round] = [];
-//     }
-//     acc[round].push(match);
-//     return acc;
-//   }, {} as Record<number, Match[]>);
-// };
+const groupMatchesByRound = (matches: Match[]): Record<number, Match[]> => {
+  return matches.reduce((acc, match) => {
+    const round = match.round || 0;
+    if (!acc[round]) {
+      acc[round] = [];
+    }
+    acc[round].push(match);
+    return acc;
+  }, {} as Record<number, Match[]>);
+};
 
 export default function MatchResultsPage() {
-  // const playedMatches = allMatches
-  //   .filter(match => match.status === 'played');
+  const playedMatches = allMatches
+    .filter(match => match.status === 'played');
 
-  // const groupedMatches = groupMatchesByRound(playedMatches);
-  // const sortedRounds = Object.keys(groupedMatches)
-  //   .map(Number)
-  //   .sort((a, b) => a - b);
+  const groupedMatches = groupMatchesByRound(playedMatches);
+  const sortedRounds = Object.keys(groupedMatches)
+    .map(Number)
+    .sort((a, b) => a - b); // Sort rounds in ascending order
 
   return (
     <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6">
       <PageHeader title="Resultados - Liga Principal" />
-      {/* {playedMatches.length > 0 ? (
+      {playedMatches.length > 0 ? (
         <div className="animate-in fade-in duration-500 space-y-8">
           {sortedRounds.map(roundNumber => {
+            // Sort matches within each round by date (most recent first)
             const matchesInRound = groupedMatches[roundNumber].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
             
             return (
@@ -51,14 +52,12 @@ export default function MatchResultsPage() {
             );
           })}
         </div>
-      ) : ( */}
+      ) : (
         <p className="text-center text-muted-foreground py-8">
           No hay resultados de partidos para mostrar en este momento.
         </p>
-      {/* )} */}
+      )}
     </main>
   );
 }
-
-
     
