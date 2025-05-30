@@ -110,6 +110,7 @@ export const relampagoTeams: Team[] = [
   { id: 'r3', name: 'CF Lyons 1844', logoUrl: 'https://placehold.co/48x48.png?text=CFL' },
   { id: 'r4', name: 'Barrio King Fc', logoUrl: 'https://placehold.co/48x48.png?text=BKFC' },
   { id: 'r5', name: 'CriminalLife', logoUrl: 'https://placehold.co/48x48.png?text=CLIFE' },
+  { id: 'r6', name: 'Locos Traidores', logoUrl: 'https://placehold.co/48x48.png?text=LT' },
 ];
 
 export const relampagoMatches: Match[] = [
@@ -189,3 +190,4 @@ export function calculateRelampagoStandings(teamsData: Team[], matchesData: Matc
 
   return standings;
 }
+
