@@ -13,23 +13,23 @@ export const teams: Team[] = [
 ];
 
 export const matches: Match[] = [
-  // Jornada 6 - Fecha: 31 de mayo, 23:00 Ecuador (2025-06-01T04:00:00Z UTC)
-  { id: 'mJ6-1', homeTeamId: '4', awayTeamId: '6', homeScore: null, awayScore: null, date: '2025-06-01T04:00:00Z', status: 'upcoming', round: 6 }, // Wonkru CF vs V07A18
-  { id: 'mJ6-2', homeTeamId: '3', awayTeamId: '2', homeScore: null, awayScore: null, date: '2025-06-01T04:00:00Z', status: 'upcoming', round: 6 }, // Barrio Alajuela vs CriminalLife
-  { id: 'mJ6-3', homeTeamId: '5', awayTeamId: '8', homeScore: null, awayScore: null, date: '2025-06-01T04:00:00Z', status: 'upcoming', round: 6 }, // Alevatopoca OFC vs Locos Traidores
-  { id: 'mJ6-4', homeTeamId: '7', awayTeamId: '1', homeScore: null, awayScore: null, date: '2025-06-01T04:00:00Z', status: 'upcoming', round: 6 }, // La Máquina vs Los Naranjas
+  // Jornada 6 - Fecha: 31 de mayo, 23:00 Ecuador (UTC-5)
+  { id: 'mJ6-1', homeTeamId: '4', awayTeamId: '6', homeScore: null, awayScore: null, date: '2025-05-31T23:00:00-05:00', status: 'upcoming', round: 6 }, // Wonkru CF vs V07A18
+  { id: 'mJ6-2', homeTeamId: '3', awayTeamId: '2', homeScore: null, awayScore: null, date: '2025-05-31T23:00:00-05:00', status: 'upcoming', round: 6 }, // Barrio Alajuela vs CriminalLife
+  { id: 'mJ6-3', homeTeamId: '5', awayTeamId: '8', homeScore: null, awayScore: null, date: '2025-05-31T23:00:00-05:00', status: 'upcoming', round: 6 }, // Alevatopoca OFC vs Locos Traidores
+  { id: 'mJ6-4', homeTeamId: '7', awayTeamId: '1', homeScore: null, awayScore: null, date: '2025-05-31T23:00:00-05:00', status: 'upcoming', round: 6 }, // La Máquina vs Los Naranjas
 
-  // Jornada 7 - Fecha: 31 de mayo, 23:20 Ecuador (2025-06-01T04:20:00Z UTC)
-  { id: 'mJ7-1', homeTeamId: '8', awayTeamId: '7', homeScore: null, awayScore: null, date: '2025-06-01T04:20:00Z', status: 'upcoming', round: 7 }, // Locos Traidores vs La Máquina
-  { id: 'mJ7-2', homeTeamId: '4', awayTeamId: '3', homeScore: null, awayScore: null, date: '2025-06-01T04:20:00Z', status: 'upcoming', round: 7 }, // Wonkru CF vs Barrio Alajuela
-  { id: 'mJ7-3', homeTeamId: '6', awayTeamId: '5', homeScore: null, awayScore: null, date: '2025-06-01T04:20:00Z', status: 'upcoming', round: 7 }, // V07A18 vs Alevatopoca OFC
-  { id: 'mJ7-4', homeTeamId: '2', awayTeamId: '1', homeScore: null, awayScore: null, date: '2025-06-01T04:20:00Z', status: 'upcoming', round: 7 }, // CriminalLife vs Los Naranjas
+  // Jornada 7 - Fecha: 31 de mayo, 23:20 Ecuador (UTC-5)
+  { id: 'mJ7-1', homeTeamId: '8', awayTeamId: '7', homeScore: null, awayScore: null, date: '2025-05-31T23:20:00-05:00', status: 'upcoming', round: 7 }, // Locos Traidores vs La Máquina
+  { id: 'mJ7-2', homeTeamId: '4', awayTeamId: '3', homeScore: null, awayScore: null, date: '2025-05-31T23:20:00-05:00', status: 'upcoming', round: 7 }, // Wonkru CF vs Barrio Alajuela
+  { id: 'mJ7-3', homeTeamId: '6', awayTeamId: '5', homeScore: null, awayScore: null, date: '2025-05-31T23:20:00-05:00', status: 'upcoming', round: 7 }, // V07A18 vs Alevatopoca OFC
+  { id: 'mJ7-4', homeTeamId: '2', awayTeamId: '1', homeScore: null, awayScore: null, date: '2025-05-31T23:20:00-05:00', status: 'upcoming', round: 7 }, // CriminalLife vs Los Naranjas
 
-  // Jornada 8 - Fecha: 31 de mayo, 23:45 Ecuador (2025-06-01T04:45:00Z UTC)
-  { id: 'mJ8-1', homeTeamId: '2', awayTeamId: '8', homeScore: null, awayScore: null, date: '2025-06-01T04:45:00Z', status: 'upcoming', round: 8 }, // CriminalLife vs Locos Traidores
-  { id: 'mJ8-2', homeTeamId: '3', awayTeamId: '6', homeScore: null, awayScore: null, date: '2025-06-01T04:45:00Z', status: 'upcoming', round: 8 }, // Barrio Alajuela vs V07A18
-  { id: 'mJ8-3', homeTeamId: '1', awayTeamId: '4', homeScore: null, awayScore: null, date: '2025-06-01T04:45:00Z', status: 'upcoming', round: 8 }, // Los Naranjas vs Wonkru CF
-  { id: 'mJ8-4', homeTeamId: '7', awayTeamId: '5', homeScore: null, awayScore: null, date: '2025-06-01T04:45:00Z', status: 'upcoming', round: 8 }, // La Máquina vs Alevatopoca OFC
+  // Jornada 8 - Fecha: 31 de mayo, 23:45 Ecuador (UTC-5)
+  { id: 'mJ8-1', homeTeamId: '2', awayTeamId: '8', homeScore: null, awayScore: null, date: '2025-05-31T23:45:00-05:00', status: 'upcoming', round: 8 }, // CriminalLife vs Locos Traidores
+  { id: 'mJ8-2', homeTeamId: '3', awayTeamId: '6', homeScore: null, awayScore: null, date: '2025-05-31T23:45:00-05:00', status: 'upcoming', round: 8 }, // Barrio Alajuela vs V07A18
+  { id: 'mJ8-3', homeTeamId: '1', awayTeamId: '4', homeScore: null, awayScore: null, date: '2025-05-31T23:45:00-05:00', status: 'upcoming', round: 8 }, // Los Naranjas vs Wonkru CF
+  { id: 'mJ8-4', homeTeamId: '7', awayTeamId: '5', homeScore: null, awayScore: null, date: '2025-05-31T23:45:00-05:00', status: 'upcoming', round: 8 }, // La Máquina vs Alevatopoca OFC
 ];
 
 export function getTeamById(teamId: string, sourceTeams: Team[] = teams): Team | undefined {
@@ -121,8 +121,8 @@ export const relampagoEditions: RelampagoEdition[] = [
     ],
     matches: [
       // Example matches for Relámpago SAP Edición 1 - replace with actual data
-      // { id: 'rm1', homeTeamId: 'r1', awayTeamId: 'r2', homeScore: null, awayScore: null, date: '2025-06-01T18:00:00Z', status: 'upcoming', round: 1 },
-      // { id: 'rm2', homeTeamId: 'r3', awayTeamId: 'r4', homeScore: null, awayScore: null, date: '2025-06-01T18:00:00Z', status: 'upcoming', round: 1 },
+      // { id: 'rm1', homeTeamId: 'r1', awayTeamId: 'r2', homeScore: null, awayScore: null, date: '2025-06-01T18:00:00-05:00', status: 'upcoming', round: 1 },
+      // { id: 'rm2', homeTeamId: 'r3', awayTeamId: 'r4', homeScore: null, awayScore: null, date: '2025-06-01T18:00:00-05:00', status: 'upcoming', round: 1 },
     ],
     playoffMatches: [],
   },
@@ -151,5 +151,6 @@ export function getRelampagoEditionBySlug(slug: string): RelampagoEdition | unde
     
 
     
+
 
 
