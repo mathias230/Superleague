@@ -16,8 +16,8 @@ const navItems = [
   { href: '/', label: 'Tabla de Posiciones', icon: Trophy },
   { href: '/results', label: 'Resultados', icon: ListChecks },
   { href: '/schedule', label: 'Calendario', icon: CalendarDays },
+  { href: '/relampago', label: 'Relámpago SAP', icon: Zap },
   { href: '/info', label: 'Información', icon: InfoIcon },
-  { href: '/relampago', label: 'Relámpago SAP', icon: Zap }, // Added Relampago link
 ];
 
 export function SidebarNav() {
@@ -55,4 +55,3 @@ export function SidebarNav() {
     </SidebarMenu>
   );
 }
-
