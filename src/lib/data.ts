@@ -4,7 +4,7 @@ import type { Team, Match, StandingEntry, RelampagoEdition } from './types';
 export const teams: Team[] = [
   { id: '1', name: 'Los Naranjas', logoUrl: 'https://placehold.co/48x48.png?text=LN' },
   { id: '2', name: 'CriminalLife', logoUrl: 'https://placehold.co/48x48.png?text=CL' },
-  { id: '3', name: 'Barrio Alajuela', logoUrl: 'https://placehold.co/48x48.png' },
+  { id: '3', name: 'Barrio Alajuela', logoUrl: 'https://placehold.co/48x48.png?text=BA' },
   { id: '4', name: 'Wonkru CF', logoUrl: 'https://placehold.co/48x48.png?text=WCF' },
   { id: '5', name: 'Alevatopoca OFC', logoUrl: 'https://placehold.co/48x48.png?text=AOFC' },
   { id: '6', name: 'V07A18', logoUrl: 'https://placehold.co/48x48.png?text=V07' },
@@ -13,7 +13,7 @@ export const teams: Team[] = [
 ];
 
 export const matches: Match[] = [
-  // Partidos para generar la tabla de la imagen (Jornadas 1-5)
+  // Jornadas 1-5 para la tabla de posiciones principal
   { id: 'mBA1', homeTeamId: '3', awayTeamId: '1', homeScore: 2, awayScore: 0, date: '2025-05-01T00:00:00-05:00', status: 'played', round: 1 },
   { id: 'mBA2', homeTeamId: '3', awayTeamId: '2', homeScore: 2, awayScore: 0, date: '2025-05-02T00:00:00-05:00', status: 'played', round: 2 },
   { id: 'mBA3', homeTeamId: '3', awayTeamId: '4', homeScore: 4, awayScore: 0, date: '2025-05-03T00:00:00-05:00', status: 'played', round: 3 },
@@ -34,8 +34,8 @@ export const matches: Match[] = [
   { id: 'mLM-vs-BA', homeTeamId: '3', awayTeamId: '7', homeScore: 2, awayScore: 0, date: '2025-05-18T00:00:00-05:00', status: 'played', round: 5 },
   { id: 'mLM-vs-CL', homeTeamId: '2', awayTeamId: '7', homeScore: 1, awayScore: 0, date: '2025-05-19T00:00:00-05:00', status: 'played', round: 5 },
   { id: 'mLM-vs-V07', homeTeamId: '6', awayTeamId: '7', homeScore: 2, awayScore: 0, date: '2025-05-20T00:00:00-05:00', status: 'played', round: 5 },
-
-  // Partidos del Calendario (Jornadas 6, 7, 8 - upcoming)
+  
+  // Jornadas 6, 7, 8 - upcoming
   { id: 'mJ6-1', homeTeamId: '4', awayTeamId: '6', homeScore: null, awayScore: null, date: '2025-05-31T23:00:00-05:00', status: 'upcoming', round: 6 },
   { id: 'mJ6-2', homeTeamId: '3', awayTeamId: '2', homeScore: null, awayScore: null, date: '2025-05-31T23:00:00-05:00', status: 'upcoming', round: 6 },
   { id: 'mJ6-3', homeTeamId: '5', awayTeamId: '8', homeScore: null, awayScore: null, date: '2025-05-31T23:00:00-05:00', status: 'upcoming', round: 6 },
@@ -124,53 +124,53 @@ export function calculateStandings(teamsData: Team[], matchesData: Match[]): Sta
 
 // --- Relámpago SAP Data ---
 
-// Helper function to shuffle an array (Fisher-Yates shuffle)
-function shuffleArray<T>(array: T[]): T[] {
-  const newArray = [...array];
-  for (let i = newArray.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-  }
-  return newArray;
-}
-
-const relampagoEdition1PlayoffTeams: Team[] = [
-  { id: 're1-t1', name: 'ALEVATOPOCA OFC', logoUrl: 'https://placehold.co/48x48.png?text=AOFC' },
-  { id: 're1-t2', name: 'Barrio Alajuela FC', logoUrl: 'https://placehold.co/48x48.png?text=BAFC' },
-  { id: 're1-t3', name: 'CF Lyons 1844', logoUrl: 'https://placehold.co/48x48.png?text=CFL' },
-  { id: 're1-t4', name: 'Barrio King Fc', logoUrl: 'https://placehold.co/48x48.png?text=BKFC' },
-  { id: 're1-t5', name: 'CriminalLife', logoUrl: 'https://placehold.co/48x48.png?text=CLIFE' },
-  { id: 're1-t6', name: 'Locos Traidores', logoUrl: 'https://placehold.co/48x48.png?text=LT' },
-  { id: 're1-t7', name: 'Wonkru CF', logoUrl: 'https://placehold.co/48x48.png?text=WCF-R' },
-  { id: 're1-t8', name: 'Samborondon FC', logoUrl: 'https://placehold.co/48x48.png?text=SFC' },
+const relampagoEdition1Teams: Team[] = [
+  { id: 're1-tBA', name: 'Barrio Alajuela', logoUrl: 'https://placehold.co/48x48.png?text=BA' }, 
+  { id: 're1-tAOFC', name: 'Alevatopoca OFC', logoUrl: 'https://placehold.co/48x48.png?text=AOFC' },
+  { id: 're1-tLT', name: 'Locos Traidores', logoUrl: 'https://placehold.co/48x48.png?text=LT' }, 
+  { id: 're1-tWCF', name: 'Wonkru CF', logoUrl: 'https://placehold.co/48x48.png?text=WCF' }, 
+  { id: 're1-tIME', name: 'I Love My Ex', logoUrl: 'https://placehold.co/48x48.png?text=IME' },
+  { id: 're1-tLN', name: 'Los Naranjas', logoUrl: 'https://placehold.co/48x48.png?text=LNR' }, 
+  { id: 're1-tCL', name: 'CriminalLife', logoUrl: 'https://placehold.co/48x48.png?text=CRL' }, 
+  { id: 're1-tLM', name: 'La Maquina', logoUrl: 'https://placehold.co/48x48.png?text=LMQ' }, 
+  { id: 're1-placeholderSF2A', name: 'Por Definir SF2-A', logoUrl: 'https://placehold.co/48x48.png?text=TBD' },
+  { id: 're1-placeholderSF2B', name: 'Por Definir SF2-B', logoUrl: 'https://placehold.co/48x48.png?text=TBD' },
+  { id: 're1-placeholderFA', name: 'Por Definir F-A', logoUrl: 'https://placehold.co/48x48.png?text=TBD' },
+  { id: 're1-placeholderFB', name: 'Por Definir F-B', logoUrl: 'https://placehold.co/48x48.png?text=TBD' },
 ];
 
-const shuffledPlayoffTeams = shuffleArray(relampagoEdition1PlayoffTeams);
-const quarterFinalMatches: Match[] = [];
-const playoffDate = '2025-07-15T19:00:00-05:00'; // Example date for playoffs
+const playoffDate = '2025-07-15T19:00:00-05:00';
+const semifinalDate = '2025-07-22T19:00:00-05:00';
+const finalDate = '2025-07-29T19:00:00-05:00';
 
-for (let i = 0; i < shuffledPlayoffTeams.length; i += 2) {
-  const matchNumber = i / 2 + 1;
-  quarterFinalMatches.push({
-    id: `re1-qf-${matchNumber}`,
-    homeTeamId: shuffledPlayoffTeams[i].id,
-    awayTeamId: shuffledPlayoffTeams[i+1].id,
-    homeScore: null,
-    awayScore: null,
-    date: playoffDate, // All QF matches at the same time for this example
-    status: 'upcoming',
-    round: `Cuartos de Final ${matchNumber}`,
-  });
-}
+
+const relampagoEdition1PlayoffMatches: Match[] = [
+  // Quarterfinals (based on image)
+  { id: 're1-qf-1', homeTeamId: 're1-tBA', awayTeamId: 're1-tAOFC', homeScore: null, awayScore: null, date: playoffDate, status: 'upcoming', round: 'Cuartos de Final 1' },
+  { id: 're1-qf-2', homeTeamId: 're1-tLT', awayTeamId: 're1-tWCF', homeScore: null, awayScore: null, date: playoffDate, status: 'upcoming', round: 'Cuartos de Final 2' },
+  { id: 're1-qf-3', homeTeamId: 're1-tIME', awayTeamId: 're1-tLN', homeScore: null, awayScore: null, date: playoffDate, status: 'upcoming', round: 'Cuartos de Final 3' },
+  { id: 're1-qf-4', homeTeamId: 're1-tCL', awayTeamId: 're1-tLM', homeScore: null, awayScore: null, date: playoffDate, status: 'upcoming', round: 'Cuartos de Final 4' },
+  
+  // Semifinals (SF1 based on image, SF2 placeholder)
+  // For visual representation in bracket, using Locos Traidores (re1-tLT) vs Barrio Alajuela (re1-tBA) as per image
+  { id: 're1-sf-1', homeTeamId: 're1-tLT', awayTeamId: 're1-tBA', homeScore: null, awayScore: null, date: semifinalDate, status: 'upcoming', round: 'Semifinal 1' },
+  // Placeholder for Semifinal 2 (Winner QF3 vs Winner QF4)
+  { id: 're1-sf-2', homeTeamId: 're1-placeholderSF2A', awayTeamId: 're1-placeholderSF2B', homeScore: null, awayScore: null, date: semifinalDate, status: 'upcoming', round: 'Semifinal 2' },
+
+  // Final (Placeholder)
+  // Placeholder for Final (Winner SF1 vs Winner SF2)
+  { id: 're1-f-1', homeTeamId: 're1-placeholderFA', awayTeamId: 're1-placeholderFB', homeScore: null, awayScore: null, date: finalDate, status: 'upcoming', round: 'Final' },
+];
+
 
 export const relampagoEditions: RelampagoEdition[] = [
   {
     id: "edition-1",
     slug: "edicion-1",
     name: "Edición 1",
-    teams: relampagoEdition1PlayoffTeams, // Use the 8 playoff teams
-    matches: [], // No group stage matches for this setup as classification was removed
-    playoffMatches: quarterFinalMatches,
+    teams: relampagoEdition1Teams,
+    matches: [], // No group stage matches as per previous request
+    playoffMatches: relampagoEdition1PlayoffMatches,
   },
   // {
   //   id: "edition-2",
@@ -185,4 +185,3 @@ export const relampagoEditions: RelampagoEdition[] = [
 export function getRelampagoEditionBySlug(slug: string): RelampagoEdition | undefined {
   return relampagoEditions.find(edition => edition.slug === slug);
 }
-    
