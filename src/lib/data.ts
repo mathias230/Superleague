@@ -124,27 +124,27 @@ export function calculateStandings(teamsData: Team[], matchesData: Match[]): Sta
 
 // --- Relámpago SAP Data ---
 
-const relampagoUserTeams: Team[] = [
+const relampagoUserTeamsEdition1: Team[] = [
   { id: 're1-tAOFC', name: 'ALEVATOPOCA OFC', logoUrl: 'https://placehold.co/48x48.png?text=AOFC' },
-  { id: 're1-tBA', name: 'Barrio Alajuela FC', logoUrl: 'https://placehold.co/48x48.png?text=BAFC' },
+  { id: 're1-tBAFC', name: 'Barrio Alajuela FC', logoUrl: 'https://placehold.co/48x48.png?text=BAFC' },
   { id: 're1-tCFL', name: 'CF Lyons 1844', logoUrl: 'https://placehold.co/48x48.png?text=CFL' },
   { id: 're1-tBKF', name: 'Barrio King Fc', logoUrl: 'https://placehold.co/48x48.png?text=BKF' },
-  { id: 're1-tCL', name: 'CriminalLife', logoUrl: 'https://placehold.co/48x48.png?text=CRL' },
+  { id: 're1-tCRL', name: 'CriminalLife', logoUrl: 'https://placehold.co/48x48.png?text=CRL' },
   { id: 're1-tLT', name: 'Locos Traidores', logoUrl: 'https://placehold.co/48x48.png?text=LT' },
   { id: 're1-tWCF', name: 'Wonkru CF', logoUrl: 'https://placehold.co/48x48.png?text=WCF' },
   { id: 're1-tSFC', name: 'Samborondon FC', logoUrl: 'https://placehold.co/48x48.png?text=SFC' },
 ];
 
-const placeholderTeams: Team[] = [
-  { id: 're1-placeholderSF1A', name: 'Por Definir SF1-A', logoUrl: 'https://placehold.co/48x48.png?text=TBD' },
-  { id: 're1-placeholderSF1B', name: 'Por Definir SF1-B', logoUrl: 'https://placehold.co/48x48.png?text=TBD' },
-  { id: 're1-placeholderSF2A', name: 'Por Definir SF2-A', logoUrl: 'https://placehold.co/48x48.png?text=TBD' },
-  { id: 're1-placeholderSF2B', name: 'Por Definir SF2-B', logoUrl: 'https://placehold.co/48x48.png?text=TBD' },
-  { id: 're1-placeholderFA', name: 'Por Definir F-A', logoUrl: 'https://placehold.co/48x48.png?text=TBD' },
-  { id: 're1-placeholderFB', name: 'Por Definir F-B', logoUrl: 'https://placehold.co/48x48.png?text=TBD' },
+const placeholderTeamsEdition1: Team[] = [
+  { id: 're1-placeholderSF1A', name: 'Por Definir SF1-A', logoUrl: 'https://placehold.co/48x48.png?text=TBD1' },
+  { id: 're1-placeholderSF1B', name: 'Por Definir SF1-B', logoUrl: 'https://placehold.co/48x48.png?text=TBD2' },
+  { id: 're1-placeholderSF2A', name: 'Por Definir SF2-A', logoUrl: 'https://placehold.co/48x48.png?text=TBD3' },
+  { id: 're1-placeholderSF2B', name: 'Por Definir SF2-B', logoUrl: 'https://placehold.co/48x48.png?text=TBD4' },
+  { id: 're1-placeholderFA', name: 'Por Definir F-A', logoUrl: 'https://placehold.co/48x48.png?text=TBDA' },
+  { id: 're1-placeholderFB', name: 'Por Definir F-B', logoUrl: 'https://placehold.co/48x48.png?text=TBDB' },
 ];
 
-const relampagoEdition1Teams: Team[] = [...relampagoUserTeams, ...placeholderTeams];
+const relampagoEdition1Teams: Team[] = [...relampagoUserTeamsEdition1, ...placeholderTeamsEdition1];
 
 // Shuffle function
 function shuffleArray<T>(array: T[]): T[] {
@@ -156,25 +156,22 @@ function shuffleArray<T>(array: T[]): T[] {
   return shuffled;
 }
 
-const shuffledUserTeamIds = shuffleArray(relampagoUserTeams.map(team => team.id));
-
-const playoffDate = '2025-07-15T19:00:00-05:00';
-const semifinalDate = '2025-07-22T19:00:00-05:00';
-const finalDate = '2025-07-29T19:00:00-05:00';
+const shuffledUserTeamIdsForEdition1 = shuffleArray(relampagoUserTeamsEdition1.map(team => team.id));
+const newMatchDate = '2025-05-31T10:00:00-05:00';
 
 const relampagoEdition1PlayoffMatches: Match[] = [
-  // Quarterfinals - Randomized
-  { id: 're1-qf-1', homeTeamId: shuffledUserTeamIds[0], awayTeamId: shuffledUserTeamIds[1], homeScore: null, awayScore: null, date: playoffDate, status: 'upcoming', round: 'Cuartos de Final 1' },
-  { id: 're1-qf-2', homeTeamId: shuffledUserTeamIds[2], awayTeamId: shuffledUserTeamIds[3], homeScore: null, awayScore: null, date: playoffDate, status: 'upcoming', round: 'Cuartos de Final 2' },
-  { id: 're1-qf-3', homeTeamId: shuffledUserTeamIds[4], awayTeamId: shuffledUserTeamIds[5], homeScore: null, awayScore: null, date: playoffDate, status: 'upcoming', round: 'Cuartos de Final 3' },
-  { id: 're1-qf-4', homeTeamId: shuffledUserTeamIds[6], awayTeamId: shuffledUserTeamIds[7], homeScore: null, awayScore: null, date: playoffDate, status: 'upcoming', round: 'Cuartos de Final 4' },
+  // Quarterfinals - Randomized with new user teams
+  { id: 're1-qf-1', homeTeamId: shuffledUserTeamIdsForEdition1[0], awayTeamId: shuffledUserTeamIdsForEdition1[1], homeScore: null, awayScore: null, date: newMatchDate, status: 'upcoming', round: 'Cuartos de Final 1' },
+  { id: 're1-qf-2', homeTeamId: shuffledUserTeamIdsForEdition1[2], awayTeamId: shuffledUserTeamIdsForEdition1[3], homeScore: null, awayScore: null, date: newMatchDate, status: 'upcoming', round: 'Cuartos de Final 2' },
+  { id: 're1-qf-3', homeTeamId: shuffledUserTeamIdsForEdition1[4], awayTeamId: shuffledUserTeamIdsForEdition1[5], homeScore: null, awayScore: null, date: newMatchDate, status: 'upcoming', round: 'Cuartos de Final 3' },
+  { id: 're1-qf-4', homeTeamId: shuffledUserTeamIdsForEdition1[6], awayTeamId: shuffledUserTeamIdsForEdition1[7], homeScore: null, awayScore: null, date: newMatchDate, status: 'upcoming', round: 'Cuartos de Final 4' },
   
   // Semifinals - Placeholders
-  { id: 're1-sf-1', homeTeamId: 're1-placeholderSF1A', awayTeamId: 're1-placeholderSF1B', homeScore: null, awayScore: null, date: semifinalDate, status: 'upcoming', round: 'Semifinal 1' },
-  { id: 're1-sf-2', homeTeamId: 're1-placeholderSF2A', awayTeamId: 're1-placeholderSF2B', homeScore: null, awayScore: null, date: semifinalDate, status: 'upcoming', round: 'Semifinal 2' },
+  { id: 're1-sf-1', homeTeamId: 're1-placeholderSF1A', awayTeamId: 're1-placeholderSF1B', homeScore: null, awayScore: null, date: newMatchDate, status: 'upcoming', round: 'Semifinal 1' },
+  { id: 're1-sf-2', homeTeamId: 're1-placeholderSF2A', awayTeamId: 're1-placeholderSF2B', homeScore: null, awayScore: null, date: newMatchDate, status: 'upcoming', round: 'Semifinal 2' },
 
   // Final - Placeholder
-  { id: 're1-f-1', homeTeamId: 're1-placeholderFA', awayTeamId: 're1-placeholderFB', homeScore: null, awayScore: null, date: finalDate, status: 'upcoming', round: 'Final' },
+  { id: 're1-f-1', homeTeamId: 're1-placeholderFA', awayTeamId: 're1-placeholderFB', homeScore: null, awayScore: null, date: newMatchDate, status: 'upcoming', round: 'Final' },
 ];
 
 
