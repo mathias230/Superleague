@@ -26,11 +26,20 @@ export function MatchCard({ match, homeTeam, awayTeam }: MatchCardProps) {
     hour12: false // Use 24-hour format e.g., 23:00
   });
 
+  let roundDisplay: string | null = null;
+  if (match.round) {
+    if (typeof match.round === 'number') {
+      roundDisplay = `Jornada ${match.round}`;
+    } else {
+      roundDisplay = match.round; // Use the string directly (e.g., "Cuartos de Final 1")
+    }
+  }
+
   return (
     <Card className="shadow-md hover:shadow-lg transition-shadow duration-200 flex flex-col">
-      {match.round && (
+      {roundDisplay && (
          <CardHeader className="pb-2 pt-4">
-           <CardTitle className="text-sm font-medium text-muted-foreground text-center">Jornada {match.round}</CardTitle>
+           <CardTitle className="text-sm font-medium text-muted-foreground text-center">{roundDisplay}</CardTitle>
          </CardHeader>
       )}
       <CardContent className="p-4 flex-grow flex flex-col justify-center">
@@ -71,3 +80,4 @@ export function MatchCard({ match, homeTeam, awayTeam }: MatchCardProps) {
     </Card>
   );
 }
+

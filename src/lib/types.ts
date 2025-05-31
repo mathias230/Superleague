@@ -13,7 +13,7 @@ export interface Match {
   awayScore: number | null; // null if match is upcoming
   date: string; // ISO string date
   status: 'played' | 'upcoming' | 'pending';
-  round?: number;
+  round?: number | string; // Can be a jornada number or a descriptive string like "Cuartos de Final"
 }
 
 export interface StandingEntry {
@@ -35,8 +35,8 @@ export interface RelampagoEdition {
   slug: string;
   name: string;
   teams: Team[];
-  matches: Match[];
-  playoffMatches?: Match[]; // Optional for now
+  matches: Match[]; // Group stage matches
+  playoffMatches?: Match[]; // Playoff stage matches
 }
 
     
