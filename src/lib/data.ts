@@ -13,7 +13,7 @@ export const teams: Team[] = [
 ];
 
 export const matches: Match[] = [
-  // Jornadas 1-5 para la tabla de posiciones principal
+  // Jornadas 1-5 (played)
   { id: 'mBA1', homeTeamId: '3', awayTeamId: '1', homeScore: 2, awayScore: 0, date: '2025-05-01T00:00:00-05:00', status: 'played', round: 1 },
   { id: 'mBA2', homeTeamId: '3', awayTeamId: '2', homeScore: 2, awayScore: 0, date: '2025-05-02T00:00:00-05:00', status: 'played', round: 2 },
   { id: 'mBA3', homeTeamId: '3', awayTeamId: '4', homeScore: 4, awayScore: 0, date: '2025-05-03T00:00:00-05:00', status: 'played', round: 3 },
@@ -34,7 +34,7 @@ export const matches: Match[] = [
   { id: 'mLM-vs-BA', homeTeamId: '3', awayTeamId: '7', homeScore: 2, awayScore: 0, date: '2025-05-18T00:00:00-05:00', status: 'played', round: 5 },
   { id: 'mLM-vs-CL', homeTeamId: '2', awayTeamId: '7', homeScore: 1, awayScore: 0, date: '2025-05-19T00:00:00-05:00', status: 'played', round: 5 },
   { id: 'mLM-vs-V07', homeTeamId: '6', awayTeamId: '7', homeScore: 2, awayScore: 0, date: '2025-05-20T00:00:00-05:00', status: 'played', round: 5 },
-  
+
   // Jornadas 6, 7, 8 - upcoming
   { id: 'mJ6-1', homeTeamId: '4', awayTeamId: '6', homeScore: null, awayScore: null, date: '2025-05-31T23:00:00-05:00', status: 'upcoming', round: 6 },
   { id: 'mJ6-2', homeTeamId: '3', awayTeamId: '2', homeScore: null, awayScore: null, date: '2025-05-31T23:00:00-05:00', status: 'upcoming', round: 6 },
@@ -124,41 +124,56 @@ export function calculateStandings(teamsData: Team[], matchesData: Match[]): Sta
 
 // --- Relámpago SAP Data ---
 
-const relampagoEdition1Teams: Team[] = [
-  { id: 're1-tBA', name: 'Barrio Alajuela', logoUrl: 'https://placehold.co/48x48.png?text=BA' }, 
-  { id: 're1-tAOFC', name: 'Alevatopoca OFC', logoUrl: 'https://placehold.co/48x48.png?text=AOFC' },
-  { id: 're1-tLT', name: 'Locos Traidores', logoUrl: 'https://placehold.co/48x48.png?text=LT' }, 
-  { id: 're1-tWCF', name: 'Wonkru CF', logoUrl: 'https://placehold.co/48x48.png?text=WCF' }, 
-  { id: 're1-tIME', name: 'I Love My Ex', logoUrl: 'https://placehold.co/48x48.png?text=IME' },
-  { id: 're1-tLN', name: 'Los Naranjas', logoUrl: 'https://placehold.co/48x48.png?text=LNR' }, 
-  { id: 're1-tCL', name: 'CriminalLife', logoUrl: 'https://placehold.co/48x48.png?text=CRL' }, 
-  { id: 're1-tLM', name: 'La Maquina', logoUrl: 'https://placehold.co/48x48.png?text=LMQ' }, 
+const relampagoUserTeams: Team[] = [
+  { id: 're1-tAOFC', name: 'ALEVATOPOCA OFC', logoUrl: 'https://placehold.co/48x48.png?text=AOFC' },
+  { id: 're1-tBA', name: 'Barrio Alajuela FC', logoUrl: 'https://placehold.co/48x48.png?text=BAFC' },
+  { id: 're1-tCFL', name: 'CF Lyons 1844', logoUrl: 'https://placehold.co/48x48.png?text=CFL' },
+  { id: 're1-tBKF', name: 'Barrio King Fc', logoUrl: 'https://placehold.co/48x48.png?text=BKF' },
+  { id: 're1-tCL', name: 'CriminalLife', logoUrl: 'https://placehold.co/48x48.png?text=CRL' },
+  { id: 're1-tLT', name: 'Locos Traidores', logoUrl: 'https://placehold.co/48x48.png?text=LT' },
+  { id: 're1-tWCF', name: 'Wonkru CF', logoUrl: 'https://placehold.co/48x48.png?text=WCF' },
+  { id: 're1-tSFC', name: 'Samborondon FC', logoUrl: 'https://placehold.co/48x48.png?text=SFC' },
+];
+
+const placeholderTeams: Team[] = [
+  { id: 're1-placeholderSF1A', name: 'Por Definir SF1-A', logoUrl: 'https://placehold.co/48x48.png?text=TBD' },
+  { id: 're1-placeholderSF1B', name: 'Por Definir SF1-B', logoUrl: 'https://placehold.co/48x48.png?text=TBD' },
   { id: 're1-placeholderSF2A', name: 'Por Definir SF2-A', logoUrl: 'https://placehold.co/48x48.png?text=TBD' },
   { id: 're1-placeholderSF2B', name: 'Por Definir SF2-B', logoUrl: 'https://placehold.co/48x48.png?text=TBD' },
   { id: 're1-placeholderFA', name: 'Por Definir F-A', logoUrl: 'https://placehold.co/48x48.png?text=TBD' },
   { id: 're1-placeholderFB', name: 'Por Definir F-B', logoUrl: 'https://placehold.co/48x48.png?text=TBD' },
 ];
 
+const relampagoEdition1Teams: Team[] = [...relampagoUserTeams, ...placeholderTeams];
+
+// Shuffle function
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+const shuffledUserTeamIds = shuffleArray(relampagoUserTeams.map(team => team.id));
+
 const playoffDate = '2025-07-15T19:00:00-05:00';
 const semifinalDate = '2025-07-22T19:00:00-05:00';
 const finalDate = '2025-07-29T19:00:00-05:00';
 
-
 const relampagoEdition1PlayoffMatches: Match[] = [
-  // Quarterfinals (based on image)
-  { id: 're1-qf-1', homeTeamId: 're1-tBA', awayTeamId: 're1-tAOFC', homeScore: null, awayScore: null, date: playoffDate, status: 'upcoming', round: 'Cuartos de Final 1' },
-  { id: 're1-qf-2', homeTeamId: 're1-tLT', awayTeamId: 're1-tWCF', homeScore: null, awayScore: null, date: playoffDate, status: 'upcoming', round: 'Cuartos de Final 2' },
-  { id: 're1-qf-3', homeTeamId: 're1-tIME', awayTeamId: 're1-tLN', homeScore: null, awayScore: null, date: playoffDate, status: 'upcoming', round: 'Cuartos de Final 3' },
-  { id: 're1-qf-4', homeTeamId: 're1-tCL', awayTeamId: 're1-tLM', homeScore: null, awayScore: null, date: playoffDate, status: 'upcoming', round: 'Cuartos de Final 4' },
+  // Quarterfinals - Randomized
+  { id: 're1-qf-1', homeTeamId: shuffledUserTeamIds[0], awayTeamId: shuffledUserTeamIds[1], homeScore: null, awayScore: null, date: playoffDate, status: 'upcoming', round: 'Cuartos de Final 1' },
+  { id: 're1-qf-2', homeTeamId: shuffledUserTeamIds[2], awayTeamId: shuffledUserTeamIds[3], homeScore: null, awayScore: null, date: playoffDate, status: 'upcoming', round: 'Cuartos de Final 2' },
+  { id: 're1-qf-3', homeTeamId: shuffledUserTeamIds[4], awayTeamId: shuffledUserTeamIds[5], homeScore: null, awayScore: null, date: playoffDate, status: 'upcoming', round: 'Cuartos de Final 3' },
+  { id: 're1-qf-4', homeTeamId: shuffledUserTeamIds[6], awayTeamId: shuffledUserTeamIds[7], homeScore: null, awayScore: null, date: playoffDate, status: 'upcoming', round: 'Cuartos de Final 4' },
   
-  // Semifinals (SF1 based on image, SF2 placeholder)
-  // For visual representation in bracket, using Locos Traidores (re1-tLT) vs Barrio Alajuela (re1-tBA) as per image
-  { id: 're1-sf-1', homeTeamId: 're1-tLT', awayTeamId: 're1-tBA', homeScore: null, awayScore: null, date: semifinalDate, status: 'upcoming', round: 'Semifinal 1' },
-  // Placeholder for Semifinal 2 (Winner QF3 vs Winner QF4)
+  // Semifinals - Placeholders
+  { id: 're1-sf-1', homeTeamId: 're1-placeholderSF1A', awayTeamId: 're1-placeholderSF1B', homeScore: null, awayScore: null, date: semifinalDate, status: 'upcoming', round: 'Semifinal 1' },
   { id: 're1-sf-2', homeTeamId: 're1-placeholderSF2A', awayTeamId: 're1-placeholderSF2B', homeScore: null, awayScore: null, date: semifinalDate, status: 'upcoming', round: 'Semifinal 2' },
 
-  // Final (Placeholder)
-  // Placeholder for Final (Winner SF1 vs Winner SF2)
+  // Final - Placeholder
   { id: 're1-f-1', homeTeamId: 're1-placeholderFA', awayTeamId: 're1-placeholderFB', homeScore: null, awayScore: null, date: finalDate, status: 'upcoming', round: 'Final' },
 ];
 
@@ -169,19 +184,13 @@ export const relampagoEditions: RelampagoEdition[] = [
     slug: "edicion-1",
     name: "Edición 1",
     teams: relampagoEdition1Teams,
-    matches: [], // No group stage matches as per previous request
+    matches: [], 
     playoffMatches: relampagoEdition1PlayoffMatches,
   },
-  // {
-  //   id: "edition-2",
-  //   slug: "edicion-2",
-  //   name: "Edición 2",
-  //   teams: [ /* Teams for edition 2 */ ],
-  //   matches: [ /* Matches for edition 2 */ ],
-  //   playoffMatches: [],
-  // }
 ];
 
 export function getRelampagoEditionBySlug(slug: string): RelampagoEdition | undefined {
   return relampagoEditions.find(edition => edition.slug === slug);
 }
+
+    
