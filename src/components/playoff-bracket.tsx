@@ -3,6 +3,7 @@
 
 import type { Match, Team } from "@/lib/types";
 import { getTeamById } from "@/lib/data";
+import { cn } from "@/lib/utils"; // Added import
 
 interface PlayoffBracketProps {
   matches: Match[];
@@ -148,3 +149,4 @@ export function PlayoffBracket({ matches: allMatches, teams }: PlayoffBracketPro
     </div>
   );
 }
+
