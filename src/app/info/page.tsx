@@ -15,7 +15,7 @@ export default function LeagueInfoPage() {
       <div className="flex-1 animate-in fade-in duration-500 p-4 md:p-6 space-y-6">
         <Card className="shadow-lg border-border">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-primary">Sobre SUPER LEAGUE</CardTitle>
+            <CardTitle className="text-xl sm:text-2xl font-bold text-primary">Sobre SUPER LEAGUE</CardTitle> {/* Responsive title */}
             <CardDescription className="text-card-foreground">¡Bienvenido al centro oficial de nuestra Liga de Clubes Pro FC25!</CardDescription>
           </CardHeader>
           <CardContent>

@@ -38,7 +38,7 @@ export default function MatchResultsPage() {
               <section key={roundNumber}>
                 <h2 className="text-2xl font-semibold mb-4 text-primary">Jornada {roundNumber}</h2>
                 {matchesInRound.length > 0 ? (
-                  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"> {/* Responsive grid */}
                     {matchesInRound.map((match: Match) => {
                       const homeTeam = getTeamById(match.homeTeamId);
                       const awayTeam = getTeamById(match.awayTeamId);
@@ -55,7 +55,7 @@ export default function MatchResultsPage() {
         </div>
       ) : (
         <p className="text-center text-muted-foreground py-8">
-          No hay resultados de partidos para mostrar en este momento.
+          No hay resultados de partidos para mostrar en este momento (a partir de Jornada 6).
         </p>
       )}
     </main>

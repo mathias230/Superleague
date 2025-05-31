@@ -1,3 +1,4 @@
+
 "use client";
 
 import { SidebarTrigger } from '@/components/ui/sidebar';
@@ -12,7 +13,7 @@ export function PageHeader({ title }: PageHeaderProps) {
       <div className="md:hidden">
         <SidebarTrigger />
       </div>
-      <h1 className="text-2xl font-semibold text-foreground">{title}</h1>
+      <h1 className="text-xl font-semibold text-foreground sm:text-2xl">{title}</h1> {/* Responsive title */}
     </header>
   );
 }

@@ -13,7 +13,7 @@ export default function RelampagoLandingPage() {
       <div className="flex-1 animate-in fade-in duration-500 p-4 md:p-6 space-y-6">
         <Card className="shadow-lg">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-primary">Ediciones del Torneo</CardTitle>
+            <CardTitle className="text-xl sm:text-2xl font-bold text-primary">Ediciones del Torneo</CardTitle> {/* Responsive title */}
             <CardDescription className="text-card-foreground">
               Selecciona una edición para ver su clasificación, partidos y resultados.
             </CardDescription>
@@ -58,5 +58,4 @@ export default function RelampagoLandingPage() {
     </main>
   );
 }
-
     

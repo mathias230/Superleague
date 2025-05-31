@@ -10,10 +10,10 @@ import { PageHeader } from "@/components/page-header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { LeagueTable } from "@/components/league-table";
+// LeagueTable and calculateStandings are no longer needed here as Clasificacion tab is removed
 import { MatchCard } from "@/components/match-card";
-import { getRelampagoEditionBySlug, calculateStandings, getTeamById } from "@/lib/data";
-import type { Match as MatchType, Team, StandingEntry, RelampagoEdition as RelampagoEditionType } from "@/lib/types"; // Adjusted import
+import { getRelampagoEditionBySlug, getTeamById } from "@/lib/data"; // calculateStandings removed
+import type { Match as MatchType, Team, RelampagoEdition as RelampagoEditionType } from "@/lib/types"; // StandingEntry removed
 import { ArrowLeftIcon } from 'lucide-react';
 
 // Helper function to group matches by round
@@ -39,7 +39,7 @@ export default function RelampagoEditionPage({ params: paramsPromise }: Relampag
   const router = useRouter();
 
   const [edition, setEdition] = useState<RelampagoEditionType | null | undefined>(undefined); // undefined for loading, null if not found
-  const [standings, setStandings] = useState<StandingEntry[]>([]);
+  // standings state is no longer needed
   const [upcomingMatches, setUpcomingMatches] = useState<MatchType[]>([]);
   const [playedMatches, setPlayedMatches] = useState<MatchType[]>([]);
   const [playoffMatches, setPlayoffMatches] = useState<MatchType[]>([]);
@@ -50,8 +50,7 @@ export default function RelampagoEditionPage({ params: paramsPromise }: Relampag
     setEdition(foundEdition);
 
     if (foundEdition) {
-      const calculatedStandings = calculateStandings(foundEdition.teams, foundEdition.matches);
-      setStandings(calculatedStandings);
+      // calculateStandings and setStandings are removed
       setUpcomingMatches(foundEdition.matches.filter(match => match.status === 'upcoming'));
       setPlayedMatches(foundEdition.matches.filter(match => match.status === 'played'));
       setPlayoffMatches(foundEdition.playoffMatches || []);
@@ -93,17 +92,15 @@ export default function RelampagoEditionPage({ params: paramsPromise }: Relampag
           </Button>
         </div>
 
-        <Tabs defaultValue="classification" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 mb-6">
-            <TabsTrigger value="classification">Clasificación</TabsTrigger>
+        <Tabs defaultValue="pending" className="w-full"> {/* Default tab changed to "pending" */}
+          <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 mb-6"> {/* Adjusted grid columns */}
+            {/* TabsTrigger for "classification" removed */}
             <TabsTrigger value="pending">Partidos Pendientes</TabsTrigger>
             <TabsTrigger value="played">Partidos Jugados</TabsTrigger>
             <TabsTrigger value="playoffs">Eliminatorias</TabsTrigger>
           </TabsList>
           
-          <TabsContent value="classification">
-            <LeagueTable standings={standings} title={`Clasificación - ${edition.name}`} />
-          </TabsContent>
+          {/* TabsContent for "classification" removed */}
           
           <TabsContent value="pending">
             <Card>
@@ -116,7 +113,7 @@ export default function RelampagoEditionPage({ params: paramsPromise }: Relampag
                   sortedUpcomingRounds.map(roundNumber => (
                     <section key={`upcoming-round-${roundNumber}`}>
                       <h3 className="text-xl font-semibold mb-3 text-primary">Jornada {roundNumber}</h3>
-                      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"> {/* Responsive grid */}
                         {groupedUpcomingMatches[roundNumber]
                           .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
                           .map((match: MatchType) => {
@@ -146,7 +143,7 @@ export default function RelampagoEditionPage({ params: paramsPromise }: Relampag
                   sortedPlayedRounds.map(roundNumber => (
                      <section key={`played-round-${roundNumber}`}>
                       <h3 className="text-xl font-semibold mb-3 text-primary">Jornada {roundNumber}</h3>
-                      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"> {/* Responsive grid */}
                         {groupedPlayedMatches[roundNumber]
                           .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
                           .map((match: MatchType) => {
@@ -173,7 +170,7 @@ export default function RelampagoEditionPage({ params: paramsPromise }: Relampag
               </CardHeader>
               <CardContent>
                 {playoffMatches.length > 0 ? (
-                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"> {/* Responsive grid */}
                     {playoffMatches.map((match: MatchType) => {
                         const homeTeam = getTeamById(match.homeTeamId, edition.teams);
                         const awayTeam = getTeamById(match.awayTeamId, edition.teams);

@@ -20,7 +20,7 @@ export function LeagueTable({ standings, title = "Tabla de Posiciones" }: League
   return (
     <Card className="shadow-lg">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold text-center text-primary">{title}</CardTitle>
+        <CardTitle className="text-xl font-bold text-center text-primary sm:text-2xl">{title}</CardTitle> {/* Responsive title */}
       </CardHeader>
       <CardContent>
         <div className="overflow-x-auto">

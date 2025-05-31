@@ -12,7 +12,7 @@ export default function AdminPage() {
       <div className="flex-1 animate-in fade-in duration-500 p-4 md:p-6 space-y-6">
         <Card className="shadow-lg border-border">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-primary">Panel de Administración</CardTitle>
+            <CardTitle className="text-xl sm:text-2xl font-bold text-primary">Panel de Administración</CardTitle> {/* Responsive title */}
             <CardDescription className="text-card-foreground">
               Gestiona los datos de la liga desde aquí.
             </CardDescription>
